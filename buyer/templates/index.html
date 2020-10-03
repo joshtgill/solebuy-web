@@ -3,18 +3,23 @@
 		<title>SoleBuy</title>
 
 		<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" href="../styles/common.css">
-		<link rel="stylesheet" href="../styles/main.css">
+
+		{% load static %}
+		<link rel="stylesheet" type="text/css" href="{% static 'common.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
 	</head>
 	<body>
 		<div class="topnav">
 			<div class="topnav-center-header">
-				<a href="file:///home/joshtgill/Documents/proj/solebuy/pages/main.html"><b><i>SoleBuy</i></b></a>
-				<a href="file:///home/joshtgill/Documents/proj/solebuy/pages/main.html"><img style="padding-left: 7px" src="../images/sun.png"></a>
+				<a href="{% url 'index' %}"><b><i>SoleBuy</i></b></a>
+				<a href="{% url 'index' %}">
+					{% load static %}
+					<img style="padding-left: 7px" src="{% static 'sun.png' %}" alt="Sun Logo">
+				</a>
 			</div>
 			<div class="topnav-right-header">
-				<a href="file:///home/joshtgill/Documents/proj/solebuy/pages/community.html">Community</a>
-				<a href="file:///home/joshtgill/Documents/proj/solebuy/pages/about.html">About</a>
+				<a href="{% url 'community' %}">Community</a>
+				<a href="{% url 'about' %}">About</a>
 			</div>
 		</div>
 		<div class="content">
@@ -25,7 +30,8 @@
 				Finding&nbsp<b>the</b>&nbspbest products, so you don't have to.
 			</div>
 			<div class="search">
-				<img src="../images/search.png">
+				{% load static %}
+				<img src="{% static 'search.png' %}" alt="Search Icon">
 				<input type="text" placeholder="Explore a category">
 			</div>
 			<div class="categories">

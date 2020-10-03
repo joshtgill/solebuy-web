@@ -1,2 +1,2 @@
-# Local files
-local/
+# Python files
+__pycache__
