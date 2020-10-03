@@ -122,14 +122,25 @@ body {
     padding: 7px 13px 7px 13px;
 }
 
+.search img {
+    float: left;
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translate(0%, -50%);
+    width: 25px;
+    height: 25px;
+}
+
 .search input {
     float: left;
     width: 90%;
     height: 100%;
 
+    margin-left: 40px;
     font-size: 30px;
     background-color: #f7f7f7;
-    color: #444444;
+    color: #222222;
     border: none;
     outline: none;
 }
