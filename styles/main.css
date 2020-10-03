@@ -1,0 +1,32 @@
+.header {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 100px;
+    padding-top: 5%;
+    color: #222222;
+}
+
+.subheader {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 30px;
+    padding-top: 1%;
+    padding-bottom: 2%;
+}
+
+.categories {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 25px;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}

@@ -1,0 +1,18 @@
+.content h1 {
+    font-size: 100px;
+    padding-top: 5%;
+    padding-left: 15%;
+    margin: 0px;
+}
+
+.content hr {
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.content p {
+    font-size: 30px;
+    padding-left: 15%;
+    padding-right: 15%;
+    line-height: 50px;
+}
