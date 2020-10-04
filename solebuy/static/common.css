@@ -85,8 +85,8 @@ body {
     position: absolute;
     top: 50%;
     transform: translate(0%, -50%);
-    width: 25px;
-    height: 25px;
+    width: 22px;
+    height: 22px;
 }
 
 .search input[type=text] {
