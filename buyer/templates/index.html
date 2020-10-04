@@ -27,12 +27,14 @@
 				Buying.Is.<i>Hard.</i>
 			</div>
 			<div class="subheader">
-				Finding&nbsp<b>the</b>&nbspbest products, so you don't have to.
+				Finding the best products, so you don't have to.
 			</div>
 			<div class="search">
 				{% load static %}
-				<img src="{% static 'search.png' %}" alt="Search Icon">
+				<img style="left: 15px" src="{% static 'search.png' %}" alt="Search Icon">
 				<input type="text" placeholder="Explore a category">
+				{% load static %}
+				<input type="image" style="right: 15px" src="{% static 'arrow.png' %}" alt="Search Submit" />
 			</div>
 			<div class="categories">
 				<b>or</b>&nbspselect one
