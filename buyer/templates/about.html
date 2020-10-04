@@ -1,10 +1,10 @@
 <html>
+	{% load static %}
 	<head>
 		<title>SoleBuy - About</title>
 
 		<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
-		{% load static %}
 		<link rel="stylesheet" type="text/css" href="{% static 'common.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'about.css' %}">
 	</head>
@@ -13,7 +13,6 @@
 			<div class="topnav-center-header">
 				<a href="{% url 'index' %}"><i>SoleBuy</i></a>
 				<a href="{% url 'index' %}">
-					{% load static %}
 					<img style="padding-left: 7px" src="{% static 'sun.png' %}" alt="Sun Logo">
 				</a>
 			</div>

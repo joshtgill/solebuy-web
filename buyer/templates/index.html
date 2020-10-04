@@ -1,10 +1,10 @@
 <html>
+	{% load static %}
 	<head>
 		<title>SoleBuy</title>
 
 		<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
-		{% load static %}
 		<link rel="stylesheet" type="text/css" href="{% static 'common.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
 	</head>
@@ -13,7 +13,6 @@
 			<div class="topnav-center-header">
 				<a href="{% url 'index' %}"><b><i>SoleBuy</i></b></a>
 				<a href="{% url 'index' %}">
-					{% load static %}
 					<img style="padding-left: 7px" src="{% static 'sun.png' %}" alt="Sun Logo">
 				</a>
 			</div>
@@ -29,13 +28,14 @@
 			<div class="subheader">
 				Finding the best products, so you don't have to.
 			</div>
-			<div class="search">
-				{% load static %}
-				<img style="left: 15px" src="{% static 'search.png' %}" alt="Search Icon">
-				<input type="text" placeholder="Explore a category">
-				{% load static %}
-				<input type="image" style="right: 15px" src="{% static 'arrow.png' %}" alt="Search Submit" />
-			</div>
+			<form action="product/" method="post">
+				{% csrf_token %}
+				<div class="search">
+					<img style="left: 15px" src="{% static 'search.png' %}" alt="Search Icon">
+					<input type="text" name="text" placeholder="Explore a category">
+					<input type="image" style="right: 15px" src="{% static 'arrow.png' %}" alt="Search Submit" />
+				</div>
+			</form>
 			<div class="categories">
 				<b>or</b>&nbspselect one
 			</div>
