@@ -21,10 +21,11 @@
 			</div>
 		</div>
 		<div class="content">
-			<div class="search" style="margin-top: 3%;">
-				<img style="left: 15px" src="{% static 'search.png' %}" alt="Search Icon">
-				<input type="text" placeholder="Explore a category" value="{{ text }}" autocomplete="off">
-				<input type="image" style="right: 15px" src="{% static 'arrow.png' %}" alt="Search Submit" />
+			<div class="search" style="margin-top: 3%">
+				<form action="" method="GET">
+					<input type="text" name="text" placeholder="Explore a category" value="{{ text }}" autocomplete="off">
+				</form>
+				<input type="image" src="{% static 'search.png' %}" alt="Search Submit" />
 			</div>
 		</div>
 	</body>

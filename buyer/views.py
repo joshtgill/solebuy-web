@@ -7,7 +7,7 @@ def index(request):
 
 
 def product(request):
-    form = SearchForm(request.POST)
+    form = SearchForm(request.GET)
     if not form.is_valid():
         return render(request, 'product.html')
 
