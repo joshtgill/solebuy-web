@@ -11,7 +11,7 @@ def product(request):
     if not form.is_valid():
         return render(request, 'product.html')
 
-    content = {'text': form.cleaned_data['text']}
+    content = {'search': form.cleaned_data['search']}
 
     return render(request, 'product.html', content)
 
