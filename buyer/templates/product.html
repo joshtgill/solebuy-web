@@ -1,11 +1,12 @@
 <html>
 	{% load static %}
 	<head>
-		<title>SoleBuy - Community</title>
+		<title>SoleBuy - {{ category.name }}</title>
 
 		<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
 		<link rel="stylesheet" type="text/css" href="{% static 'common.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'product.css' %}">
 	</head>
 	<body>
 		<div class="topnav">
@@ -21,11 +22,25 @@
 			</div>
 		</div>
 		<div class="content">
-			<div class="search" style="margin-top: 3%">
+			<div class="search" style="margin-top: 2%">
 				<form action="" method="GET">
-					<input type="text" name="search" placeholder="Explore a category" value="{{ search }}" autocomplete="off">
+					<input type="text" name="search" placeholder="Explore a category" value="{{ category.name }}" autocomplete="off">
 				</form>
 				<input type="image" src="{% static 'search.png' %}" alt="Search Submit" />
+			</div>
+			<div class="filters">
+				{% with "float: left; width: "|add:filterWidth as filterStyle %}
+					{% for assister in category.assisters %}
+						<div style="{{ filterStyle }}">
+							<h2>{{ assister.prompt }}</h2>
+							<select>
+								{% for filter in assister.filters %}
+								<option>{{ filter }}</option>
+								{% endfor %}
+							</select>
+						</div>
+					{% endfor %}
+				{% endwith %}
 			</div>
 		</div>
 	</body>
