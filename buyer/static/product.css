@@ -1,0 +1,15 @@
+.filters {
+    margin-top: 2%;
+    width: 100%;
+    text-align: center;
+}
+
+select {
+    width: 50%;
+    height: 40px;
+    padding-left: 10px;
+    font-size: 20px;
+    background-color: #ffffff;
+    border: 1px solid #444444;
+    border-radius: 5px;
+}
