@@ -24,7 +24,7 @@
 		<div class="content">
 			<div class="search" style="margin-top: 2%">
 				<form action="" method="GET">
-					<input type="text" name="search" placeholder="Explore a category" value="{{ category.name }}" autocomplete="off">
+					{{ searchForm }}
 				</form>
 				<input type="image" src="{% static 'search.png' %}" alt="Search Submit" />
 			</div>

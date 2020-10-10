@@ -4,7 +4,7 @@ import json
 
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'index.html', {'searchForm': SearchForm()})
 
 
 def product(request):
@@ -25,7 +25,9 @@ def product(request):
     if not category:
         return render(request, 'product.html', {'filterWidth': '100%'})
 
-    content = {'category': category, 'filterWidth': str(len(category.get('assisters')))}
+    # Initialize form
+    searchForm = SearchForm(initial={'search': category.get('name')})
+    content = {'searchForm': searchForm, 'category': category, 'filterWidth': str(len(category.get('assisters')))}
 
     return render(request, 'product.html', content)
 
