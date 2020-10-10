@@ -28,20 +28,20 @@
 				</form>
 				<input type="image" src="{% static 'search.png' %}" alt="Search Submit" />
 			</div>
-			<div class="filters">
-				{% with "float: left; width: calc(100% / "|add:filterWidth|add:")" as filterStyle %}
-					{% for assister in category.assisters %}
-						<div style="{{ filterStyle }}">
-							<h2>{{ assister.prompt }}</h2>
-							<select>
-								{% for filter in assister.filters %}
-								<option>{{ filter }}</option>
-								{% endfor %}
-							</select>
-						</div>
-					{% endfor %}
-				{% endwith %}
-			</div>
+			<form action="" method="POST">
+				{% csrf_token %}
+				<div class="filters">
+					{% with "float: left; width: calc(100% / "|add:filterWidth|add:")" as filterStyle %}
+						{% for selectForm in selectForms %}
+							<div style="{{ filterStyle }}">
+								<h3>{{ category.assisters.0.prompt }}</h3>
+								{{ selectForm }}
+							</div>
+						{% endfor %}
+					{% endwith %}
+					<input type="Submit"/>
+				</div>
+			</form>
 		</div>
 	</body>
 </html>
