@@ -42,6 +42,9 @@ def product(request):
             idMap = request.session['idMap']
             if filterId not in idMap[assisterId]:
                 idMap[assisterId].append(filterId)
+            else:
+                idMap[assisterId].remove(filterId)
+
             request.session['idMap'] = idMap
     else:
         # Reset id map on GET request (aka search)
