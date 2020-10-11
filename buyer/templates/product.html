@@ -30,17 +30,28 @@
 			</div>
 			<form action="" method="POST">
 				{% csrf_token %}
-				<div class="filters">
-					{% with "float: left; width: calc(100% / "|add:filterWidth|add:")" as filterStyle %}
-						{% for selectForm in selectForms %}
-							<div style="{{ filterStyle }}">
-								<h3>{{ selectForm.prompt }}</h3>
-								{{ selectForm }}
-							</div>
-						{% endfor %}
-					{% endwith %}
-					<input type="Submit"/>
-				</div>
+				{% with "width: "|add:filtersWidth|add:"%" as filtersStyle %}
+					<div class="filters" style="{{ filtersStyle }}">
+						{% with "float: left; width: calc(100% / "|add:filterWidth|add:")" as filterStyle %}
+							{% for assister in category.assisters %}
+								<div class="filter" style="{{ filterStyle }}">
+									<h3>{{ assister.prompt }}</h3>
+									<hr>
+									{% with forloop.counter0|stringformat:"i" as assisterId %}
+										{% for filterr in assister.filters %}
+											{% with forloop.counter0|stringformat:"i" as filterrId %}
+												{% with assisterId|add:"."|add:filterrId as idd%}
+													<button name="filterButton" type="Submit" value="{{ idd }}">{{ filterr }}</button>
+												{% endwith %}
+											{% endwith %}
+										{% endfor %}
+									{% endwith %}
+								</div>
+							{% endfor %}
+						{% endwith %}
+						{{ results }}
+					</div>
+				{% endwith %}
 			</form>
 		</div>
 	</body>

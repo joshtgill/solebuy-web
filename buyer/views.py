@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import SearchForm, SelectForm
+from .forms import SearchForm, FilterForm
 from buyer.src.assistant import Assistant
 import json
 
@@ -29,33 +29,25 @@ def product(request):
 
     # Searched category not found
     if not category:
-        return render(request, 'product.html', {'searchForm': searchForm, 'filterWidth': '100%'})
-
-    # Initialize select form(s)
-    selectForms = []
-    for assister in category.get('assisters'):
-        # Get select form info from data
-        title = assister.get('label')
-        prompt = assister.get('prompt')
-        choices = [(i, assister.get('filters')[i]) for i in range(len(assister.get('filters')))]
-
-        # Build select form
-        selectForm = SelectForm(title=title, prompt=prompt, choices=choices, initiall=None)
-        if request.method == 'POST':
-            selectForm = SelectForm(request.POST, title=title, prompt=prompt, choices=choices, initiall=None)
-            if selectForm.is_valid():
-                selectForm.initiall = selectForm.cleaned_data.get(selectForm.title)
-
-        selectForms.append(selectForm)
+        return render(request, 'product.html', {'searchForm': searchForm, 'filtersWidth': str(50), 'filterWidth': '100%'})
 
     # Find the recommended product(s)
+    idMap = []
     if request.method == 'POST':
-        idMap = []
-        for form in selectForms:
-            idMap.append([int(form.initiall)])
-        print(Assistant().findProducts(category, idMap))
+        form = FilterForm(request.POST)
+        if form.is_valid():
+            selectValue = form.cleaned_data.get('filterButton')
+            assisterId = int(selectValue[ : selectValue.find('.')])
+            filterId = int(selectValue[selectValue.find('.') + 1 : ])
+            idMap = request.session['idMap']
+            if filterId not in idMap[assisterId]:
+                idMap[assisterId].append(filterId)
+            request.session['idMap'] = idMap
+    else:
+        # Reset id map on GET request (aka search)
+        request.session['idMap'] = [[] for i in range(len(category.get('assisters')))]
 
-    content = {'searchForm': searchForm, 'category': category, 'selectForms': selectForms, 'filterWidth': str(len(selectForms))}
+    content = {'searchForm': searchForm, 'category': category, 'filtersWidth': str(30 + len(category.get('assisters')) * 10), 'filterWidth': str(len(category.get('assisters'))), 'results': Assistant().findProducts(category, idMap)}
     return render(request, 'product.html', content)
 
 

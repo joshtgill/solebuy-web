@@ -5,8 +5,8 @@ class Assistant:
         for product in category.get('products'):
             filterBitmap = [0] * len(userIdMap)
             for assisterId in range(len(userIdMap)):
-                # The default value was selected
-                if 0 in userIdMap[assisterId]:
+                # If no filters exists for asssister, then pass it
+                if not userIdMap[assisterId]:
                     filterBitmap[assisterId] = 1
                     continue
 
