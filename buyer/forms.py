@@ -10,6 +10,7 @@ class SelectForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         self.title = kwargs.pop('title')
+        self.prompt = kwargs.pop('prompt')
         self.choices = kwargs.pop('choices')
         self.initiall = kwargs.pop('initiall')
         super(SelectForm, self).__init__(*args, **kwargs)

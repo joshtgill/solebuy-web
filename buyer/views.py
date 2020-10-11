@@ -35,12 +35,13 @@ def product(request):
     for assister in category.get('assisters'):
         # Get select form info from data
         title = assister.get('label')
+        prompt = assister.get('prompt')
         choices = [(filterr, filterr) for filterr in assister.get('filters')]
 
         # Build select form
-        selectForm = SelectForm(title=title, choices=choices, initiall=None)
+        selectForm = SelectForm(title=title, prompt=prompt, choices=choices, initiall=None)
         if request.method == 'POST':
-            selectForm = SelectForm(request.POST, title=title, choices=choices, initiall=None)
+            selectForm = SelectForm(request.POST, title=title, prompt=prompt, choices=choices, initiall=None)
             if selectForm.is_valid():
                 selectForm.initiall = selectForm.cleaned_data.get(selectForm.title)
 

@@ -34,7 +34,7 @@
 					{% with "float: left; width: calc(100% / "|add:filterWidth|add:")" as filterStyle %}
 						{% for selectForm in selectForms %}
 							<div style="{{ filterStyle }}">
-								<h3>{{ category.assisters.0.prompt }}</h3>
+								<h3>{{ selectForm.prompt }}</h3>
 								{{ selectForm }}
 							</div>
 						{% endfor %}
