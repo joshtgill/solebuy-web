@@ -14,7 +14,7 @@ def product(request):
         return render(request, 'product.html')
     search = form.cleaned_data['search']
 
-    # Lookup the cateogry
+    # Lookup the category from search
     categoriesData = {}
     with open('/home/joshtgill/Documents/proj/solebuy-web/local/categories.json', 'r') as filee:
         categoriesData = json.load(filee)
@@ -22,27 +22,29 @@ def product(request):
     for categoryData in categoriesData:
         if search == categoryData.get('name'):
             category = categoryData
-    if not category:
-        return render(request, 'product.html', {'filterWidth': '100%'})
 
     # Initialize search form
     searchForm = SearchForm(initial={'search': category.get('name')})
 
+    # Searched category not found
+    if not category:
+        return render(request, 'product.html', {'searchForm': searchForm, 'filterWidth': '100%'})
+
     # Initialize select form(s)
     selectForms = []
     for assister in category.get('assisters'):
-        choices = []
-        for filterr in assister.get('filters'):
-            choices.append((filterr, filterr))
+        # Get select form info from data
+        title = assister.get('label')
+        choices = [(filterr, filterr) for filterr in assister.get('filters')]
 
-        selectForms.append(SelectForm(title=assister.get('label'), choices=tuple(choices)))
+        # Build select form
+        selectForm = SelectForm(title=title, choices=choices, initiall=None)
+        if request.method == 'POST':
+            selectForm = SelectForm(request.POST, title=title, choices=choices, initiall=None)
+            if selectForm.is_valid():
+                selectForm.initiall = selectForm.cleaned_data.get(selectForm.title)
 
-    # If request is POST, get value from select form(s)
-    if request.method == 'POST':
-        for form in selectForms:
-            postForm = SelectForm(request.POST, title=form.title, choices=form.choices)
-            if postForm.is_valid():
-                print(postForm.cleaned_data.get(form.title))
+        selectForms.append(selectForm)
 
     content = {'searchForm': searchForm, 'category': category, 'selectForms': selectForms, 'filterWidth': str(len(selectForms))}
     return render(request, 'product.html', content)
