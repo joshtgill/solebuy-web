@@ -36,7 +36,7 @@ def product(request):
         # Get select form info from data
         title = assister.get('label')
         prompt = assister.get('prompt')
-        choices = [(filterr, filterr) for filterr in assister.get('filters')]
+        choices = [(i, assister.get('filters')[i]) for i in range(len(assister.get('filters')))]
 
         # Build select form
         selectForm = SelectForm(title=title, prompt=prompt, choices=choices, initiall=None)
