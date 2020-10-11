@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .forms import SearchForm, SelectForm
+from buyer.src.assistant import Assistant
 import json
 
 
@@ -46,6 +47,13 @@ def product(request):
                 selectForm.initiall = selectForm.cleaned_data.get(selectForm.title)
 
         selectForms.append(selectForm)
+
+    # Find the recommended product(s)
+    if request.method == 'POST':
+        idMap = []
+        for form in selectForms:
+            idMap.append([int(form.initiall)])
+        print(Assistant().findProducts(category, idMap))
 
     content = {'searchForm': searchForm, 'category': category, 'selectForms': selectForms, 'filterWidth': str(len(selectForms))}
     return render(request, 'product.html', content)
