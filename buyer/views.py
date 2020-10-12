@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from .forms import SearchForm, FilterForm
+from .forms import FilterForm
+from solebuy.forms import SearchForm
 from buyer.src.assistant import Assistant
 import json
 
@@ -65,4 +66,4 @@ def resetIdMap(request, numAssisters):
 
 
 def about(request):
-    return render(request, 'about.html')
+    return render(request, 'about.html', {'searchForm': SearchForm()})

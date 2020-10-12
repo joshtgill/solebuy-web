@@ -9,18 +9,8 @@
 		<link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
 	</head>
 	<body>
-		<div class="topnav">
-			<div class="topnav-center-header">
-				<a href="{% url 'index' %}"><i>SoleBuy</i></a>
-				<a href="{% url 'index' %}">
-					<img style="padding-left: 7px" src="{% static 'sun.png' %}" alt="Sun Logo">
-				</a>
-			</div>
-			<div class="topnav-right-header">
-				<a href="{% url 'community' %}"><b>Community</b></a>
-				<a href="{% url 'about' %}">About</a>
-			</div>
-		</div>
+		{% include "topnav_search.html" %}
+
 		<div class="content">
 		</div>
 	</body>

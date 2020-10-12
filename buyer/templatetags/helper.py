@@ -19,7 +19,10 @@ def buildButtonStyle(buttonValue, idMap):
     assisterId = int(buttonValue.split('.')[0])
     filterId = int(buttonValue.split('.')[1])
 
-    return 'background-color: {}'.format('#d8e7f0' if filterId in idMap[assisterId] else '#ffffff')
+    if filterId in idMap[assisterId]:
+        return 'background-color: #2385e8; color: #ffffff'
+    else:
+        return 'background-color: #ffffff; color: #222222; border: 1px solid #222222;'
 
 
 @register.filter(name='determineButtonValue')

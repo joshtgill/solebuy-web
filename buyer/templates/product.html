@@ -9,15 +9,9 @@
 		<link rel="stylesheet" type="text/css" href="{% static 'product.css' %}">
 	</head>
 	<body>
-		{% include "navbar.html" %}
+		{% include "topnav_search.html" %}
 
 		<div class="content">
-			<div class="search" style="margin-top: 2%">
-				<form action="" method="GET">
-					{{ searchForm }}
-				</form>
-				<input type="image" src="{% static 'search.png' %}" alt="Search Submit" />
-			</div>
 			<form action="" method="POST">
 				{% csrf_token %}
 				<div class="filters" style="{{ assisters|length|buildFiltersStyle }}">
