@@ -1,26 +1,16 @@
 <html>
 	{% load static %}
+	{% load helper %}
 	<head>
-		<title>SoleBuy - {{ category.name }}</title>
+		<title>SoleBuy - {{ searchForm.text.value }}</title>
 
 		<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-
 		<link rel="stylesheet" type="text/css" href="{% static 'common.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'product.css' %}">
 	</head>
 	<body>
-		<div class="topnav">
-			<div class="topnav-center-header">
-				<a href="{% url 'index' %}"><i>SoleBuy</i></a>
-				<a href="{% url 'index' %}">
-					<img style="padding-left: 7px" src="{% static 'sun.png' %}" alt="Sun Logo">
-				</a>
-			</div>
-			<div class="topnav-right-header">
-				<a href="{% url 'community' %}">Community</a>
-				<a href="{% url 'about' %}">About</a>
-			</div>
-		</div>
+		{% include "navbar.html" %}
+
 		<div class="content">
 			<div class="search" style="margin-top: 2%">
 				<form action="" method="GET">
@@ -30,28 +20,20 @@
 			</div>
 			<form action="" method="POST">
 				{% csrf_token %}
-				{% with "width: "|add:filtersWidth|add:"%" as filtersStyle %}
-					<div class="filters" style="{{ filtersStyle }}">
-						{% with "float: left; width: calc(100% / "|add:filterWidth|add:")" as filterStyle %}
-							{% for assister in category.assisters %}
-								<div class="filter" style="{{ filterStyle }}">
-									<h3>{{ assister.prompt }}</h3>
-									<hr>
-									{% with forloop.counter0|stringformat:"i" as assisterId %}
-										{% for filterr in assister.filters %}
-											{% with forloop.counter0|stringformat:"i" as filterrId %}
-												{% with assisterId|add:"."|add:filterrId as idd%}
-													<button name="filterButton" type="Submit" value="{{ idd }}">{{ filterr }}</button>
-												{% endwith %}
-											{% endwith %}
-										{% endfor %}
-									{% endwith %}
-								</div>
-							{% endfor %}
-						{% endwith %}
-						{{ results }}
-					</div>
-				{% endwith %}
+				<div class="filters" style="{{ assisters|length|buildFiltersStyle }}">
+					{% for assister in assisters %}
+						<div class="filter" style="{{ assisters|length|buildFilterStyle }}">
+							<h3>{{ assister.prompt }}</h3>
+							<hr>
+							{% with forloop.counter0|stringformat:"i" as assisterId %}
+								{% for filterText in assister.filters %}
+									<button type="Submit" name="button" value={{ assisterId|determineButtonValue:forloop.counter0 }}>{{ filterText }}</button>
+								{% endfor %}
+							{% endwith %}
+						</div>
+					{% endfor %}
+					{{ results }}
+				</div>
 			</form>
 		</div>
 	</body>

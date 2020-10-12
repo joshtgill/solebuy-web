@@ -13,45 +13,54 @@ def product(request):
     form = SearchForm(request.GET)
     if not form.is_valid():
         return render(request, 'product.html')
-    search = form.cleaned_data['search']
 
-    # Lookup the category from search
+    # Get category data from search text
+    categoryData = getCategoryData(form.cleaned_data['text'])
+    if not categoryData:
+        content = {'searchForm': form, 'filtersWidth': str(50), 'filterWidth': '100%'}
+        return render(request, 'product.html', content)
+
+    # Find the recommended product(s)
+    updateIdMap(request) if request.method == 'POST' else resetIdMap(request, len(categoryData.get('assisters')))
+    results = Assistant().findProducts(categoryData, request.session['idMap'])
+
+    # Build content for template
+    content = {'searchForm': form, 'categoryData': categoryData,
+               'assisters': categoryData.get('assisters'),
+               'results': results}
+
+    return render(request, 'product.html', content)
+
+
+def getCategoryData(searchText):
     categoriesData = {}
     with open('/home/joshtgill/Documents/proj/solebuy-web/local/categories.json', 'r') as filee:
         categoriesData = json.load(filee)
-    category = {}
+
     for categoryData in categoriesData:
-        if search == categoryData.get('name'):
-            category = categoryData
+        if searchText == categoryData.get('name'):
+            return categoryData
 
-    # Initialize search form
-    searchForm = SearchForm(initial={'search': category.get('name')})
+    return None
 
-    # Searched category not found
-    if not category:
-        return render(request, 'product.html', {'searchForm': searchForm, 'filtersWidth': str(50), 'filterWidth': '100%'})
 
-    # Find the recommended product(s)
-    idMap = []
-    if request.method == 'POST':
-        form = FilterForm(request.POST)
-        if form.is_valid():
-            selectValue = form.cleaned_data.get('filterButton')
-            assisterId = int(selectValue[ : selectValue.find('.')])
-            filterId = int(selectValue[selectValue.find('.') + 1 : ])
-            idMap = request.session['idMap']
-            if filterId not in idMap[assisterId]:
-                idMap[assisterId].append(filterId)
-            else:
-                idMap[assisterId].remove(filterId)
+def updateIdMap(request):
+    form = FilterForm(request.POST)
+    if form.is_valid():
+        selectValue = form.cleaned_data.get('button')
+        assisterId = int(selectValue[ : selectValue.find('.')])
+        filterId = int(selectValue[selectValue.find('.') + 1 : ])
+        idMap = request.session['idMap']
+        if filterId not in idMap[assisterId]:
+            idMap[assisterId].append(filterId)
+        else:
+            idMap[assisterId].remove(filterId)
 
-            request.session['idMap'] = idMap
-    else:
-        # Reset id map on GET request (aka search)
-        request.session['idMap'] = [[] for i in range(len(category.get('assisters')))]
+        request.session['idMap'] = idMap
 
-    content = {'searchForm': searchForm, 'category': category, 'filtersWidth': str(30 + len(category.get('assisters')) * 10), 'filterWidth': str(len(category.get('assisters'))), 'results': Assistant().findProducts(category, idMap)}
-    return render(request, 'product.html', content)
+
+def resetIdMap(request, numAssisters):
+    request.session['idMap'] = [[] for i in range(numAssisters)]
 
 
 def about(request):
