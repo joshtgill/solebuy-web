@@ -27,6 +27,7 @@ def product(request):
     # Build content for template
     content = {'searchForm': form, 'categoryData': categoryData,
                'assisters': categoryData.get('assisters'),
+               'idMap': request.session['idMap'],
                'results': results}
 
     return render(request, 'product.html', content)

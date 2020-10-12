@@ -27,7 +27,9 @@
 							<hr>
 							{% with forloop.counter0|stringformat:"i" as assisterId %}
 								{% for filterText in assister.filters %}
-									<button type="Submit" name="button" value={{ assisterId|determineButtonValue:forloop.counter0 }}>{{ filterText }}</button>
+									{% with assisterId|determineButtonValue:forloop.counter0 as buttonValue %}
+										<button type="Submit" name="button" value={{ buttonValue }} style="{{ buttonValue|buildButtonStyle:idMap }}">{{ filterText }}</button>
+									{% endwith %}
 								{% endfor %}
 							{% endwith %}
 						</div>
