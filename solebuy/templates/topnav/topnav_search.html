@@ -1,16 +1,18 @@
 {% load static %}
 
+<link rel="stylesheet" type="text/css" href="{% static 'styles/topnav.css' %}">
+
 <div class="topnav">
     <div class="topnav-search">
+        <input type="image" src="{% static 'images/search_topnav.png' %}" alt="Search Submit" />
         <form action="" method="GET">
             {{ searchForm }}
         </form>
-        <input type="image" src="{% static 'search_topnav.png' %}" alt="Search Submit" />
     </div>
     <div class="topnav-center-header">
-        <a href="{% url 'index' %}"><b><i>SoleBuy</i></b></a>
-        <a href="{% url 'index' %}">
-            <img style="padding-left: 7px" src="{% static 'sun.png' %}" alt="Sun Logo">
+        <a href="{% url 'home' %}"><b><i>SoleBuy</i></b></a>
+        <a href="{% url 'home' %}">
+            <img style="padding-left: 7px" src="{% static 'images/sun.png' %}" alt="Sun Logo">
         </a>
     </div>
     <div class="topnav-right-header">

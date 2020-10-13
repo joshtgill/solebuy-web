@@ -54,8 +54,10 @@ ROOT_URLCONF = 'solebuy.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'buyer/templates',
-                 BASE_DIR / 'community/templates'],
+        'DIRS': [BASE_DIR / 'solebuy/templates',
+                 BASE_DIR / 'buyer/templates',
+                 BASE_DIR / 'community/templates',
+                 BASE_DIR / 'meta/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,4 +125,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'solebuy/static/',
     BASE_DIR / 'buyer/static/',
+    BASE_DIR / 'meta/static/',
 ]

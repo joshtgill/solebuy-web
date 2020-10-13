@@ -5,11 +5,11 @@
 		<title>SoleBuy - {{ searchForm.text.value }}</title>
 
 		<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" type="text/css" href="{% static 'common.css' %}">
-		<link rel="stylesheet" type="text/css" href="{% static 'product.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'styles/common.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'styles/category.css' %}">
 	</head>
 	<body>
-		{% include "topnav_search.html" %}
+		{% include "topnav/topnav_search.html" %}
 
 		<div class="content">
 			<form action="" method="POST">

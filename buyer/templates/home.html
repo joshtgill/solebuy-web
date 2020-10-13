@@ -1,0 +1,29 @@
+<html>
+	{% load static %}
+	<head>
+		<title>SoleBuy</title>
+
+		<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="{% static 'styles/common.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'styles/home.css' %}">
+	</head>
+	<body>
+		{% include "topnav/topnav.html" %}
+
+		<div class="content">
+			<div class="header">
+				Search. Answer.<br>
+				Buy. Done.
+			</div>
+			<div class="search">
+				<form action="category/" method="GET">
+					{{ searchForm }}
+				</form>
+				<input type="image" src="{% static 'images/search.png' %}" alt="Search Submit" />
+			</div>
+			<div class="categories">
+				<b>or</b>&nbspselect one
+			</div>
+		</div>
+	</body>
+</html>

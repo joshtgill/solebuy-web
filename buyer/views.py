@@ -5,21 +5,21 @@ from buyer.src.assistant import Assistant
 import json
 
 
-def index(request):
-    return render(request, 'index.html', {'searchForm': SearchForm()})
+def home(request):
+    return render(request, 'home.html', {'searchForm': SearchForm()})
 
 
-def product(request):
+def category(request):
     # Get the search
     form = SearchForm(request.GET)
     if not form.is_valid():
-        return render(request, 'product.html')
+        return render(request, 'category.html')
 
     # Get category data from search text
     categoryData = getCategoryData(form.cleaned_data['text'])
     if not categoryData:
         content = {'searchForm': form, 'filtersWidth': str(50), 'filterWidth': '100%'}
-        return render(request, 'product.html', content)
+        return render(request, 'category.html', content)
 
     # Find the recommended product(s)
     updateIdMap(request) if request.method == 'POST' else resetIdMap(request, len(categoryData.get('assisters')))
@@ -31,7 +31,7 @@ def product(request):
                'idMap': request.session['idMap'],
                'results': results}
 
-    return render(request, 'product.html', content)
+    return render(request, 'category.html', content)
 
 
 def getCategoryData(searchText):
@@ -64,6 +64,3 @@ def updateIdMap(request):
 def resetIdMap(request, numAssisters):
     request.session['idMap'] = [[] for i in range(numAssisters)]
 
-
-def about(request):
-    return render(request, 'about.html', {'searchForm': SearchForm()})

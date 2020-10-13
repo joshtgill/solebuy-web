@@ -1,0 +1,16 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'styles/topnav.css' %}">
+
+<div class="topnav">
+    <div class="topnav-center-header">
+        <a href="{% url 'home' %}"><b><i>SoleBuy</i></b></a>
+        <a href="{% url 'home' %}">
+            <img style="padding-left: 7px" src="{% static 'images/sun.png' %}" alt="Sun Logo">
+        </a>
+    </div>
+    <div class="topnav-right-header">
+        <a href="{% url 'community' %}">Community</a>
+        <a href="{% url 'about' %}">About</a>
+    </div>
+</div>
