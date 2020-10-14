@@ -1,6 +1,7 @@
 body {
     background-color: #f2f2f2;
     padding-top: 53px;
+    height: calc(100% - 53px);
     margin: 0;
     font-family: Roboto;
 }
