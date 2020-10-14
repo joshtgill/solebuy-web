@@ -3,15 +3,15 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 55px;
+    height: 53px;
+    min-height: 5%;
 
-    background-color: #111111;
+    background-color: rgb(17, 17, 17);
     overflow: hidden; /* Always stay on top */
 }
 
 .topnav-center-header {
     position: absolute;
-    float: left;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -19,13 +19,13 @@
 
 .topnav-center-header a {
     vertical-align: middle;
-    font-size: 20px;
-    color: #ffffff;
+    font-size: 21px;
+    color: rgb(255, 255, 255);
     text-decoration: none;
 }
 
 .topnav-center-header a:hover {
-    color: #dddddd;
+    color: rgb(238, 238, 238);
 }
 
 .topnav-center-header img {
@@ -34,34 +34,36 @@
     height: 20px;
 }
 
-.topnav-search {
+.topnav .search {
     position: absolute;
     left: 10px;
     top: 50%;
     transform: translate(0%, -50%);
+    width: 20%;
+    min-width: 250px;
+    max-width: 400px;
     height: 70%;
-    width: 400px;
 
     padding-left: 5px;
     font-size: 30px;
-    background-color: #333333;
+    background-color: rgb(51, 51, 51);
     border-radius: 5px;
 }
 
-.topnav-search input[type=text] {
+.topnav .search input[type=text] {
     position: absolute;
     float: left;
-    width: calc(100% - 58px);
+    width: calc(100% - 40px);
     height: 100%;
 
     font-size: 20px;
-    background-color: #333333;
-    color: #bbbbbb;
+    background-color: rgb(51, 51, 51);
+    color: rgb(187, 187, 187);
     border: none;
     outline: none;
 }
 
-.search img, input[type=image] {
+.topnav .search img, input[type=image] {
     position: absolute;
     float: left;
     top: 50%;
@@ -80,12 +82,12 @@
 }
 
 .topnav-right-header a {
-    margin-right: 15px;
+    margin-right: 10px;
     font-size: 18px;
-    color: #ffffff;
+    color: rgb(255, 255, 255);
     text-decoration: none;
 }
 
 .topnav-right-header a:hover {
-    color: #dddddd;
+    color: rgb(238, 238, 238);
 }
