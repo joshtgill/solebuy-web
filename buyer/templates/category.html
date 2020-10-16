@@ -14,9 +14,9 @@
 		<div class="content">
 			<form action="" method="POST">
 				{% csrf_token %}
-				<div class="filters" style="{{ assisters|length|buildFiltersStyle }}">
+				<div class="filters">
 					{% for assister in assisters %}
-						<div class="filter" style="{{ assisters|length|buildFilterStyle }}">
+						<div class="filter">
 							<h3>{{ assister.prompt }}</h3>
 							<hr>
 							{% with forloop.counter0|stringformat:"i" as assisterId %}
@@ -28,9 +28,9 @@
 							{% endwith %}
 						</div>
 					{% endfor %}
-					{{ results }}
 				</div>
 			</form>
+			{{ results }}
 		</div>
 	</body>
 </html>
