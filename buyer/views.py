@@ -6,7 +6,14 @@ import json
 
 
 def home(request):
-    return render(request, 'home.html', {'searchForm': SearchForm()})
+    # Get category names and icon path
+    categoriesData = getCategoriesData()
+    categoriesInfo = [(categoryData.get('name'), categoryData.get('iconPath')) for categoryData in categoriesData]
+
+    # Build content for template
+    content = {'searchForm': SearchForm(), 'categoriesInfo': categoriesInfo}
+
+    return render(request, 'home.html', content)
 
 
 def category(request):
@@ -35,15 +42,20 @@ def category(request):
 
 
 def getCategoryData(searchText):
-    categoriesData = {}
-    with open('/home/joshtgill/Documents/proj/solebuy-web/local/categories.json', 'r') as filee:
-        categoriesData = json.load(filee)
+    categoriesData = getCategoriesData()
 
     for categoryData in categoriesData:
         if searchText == categoryData.get('name'):
             return categoryData
 
     return None
+
+
+def getCategoriesData():
+    with open('/home/joshtgill/Documents/proj/solebuy-web/local/categories.json', 'r') as filee:
+        return json.load(filee)
+
+    return {}
 
 
 def updateIdMap(request):

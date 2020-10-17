@@ -44,12 +44,38 @@
     outline: none;
 }
 
-.categories {
+.or-select-one {
     display: flex;
-    position: relative;
 
     justify-content: center;
     align-items: center;
     font-size: 25px;
-    padding-top: 2.7%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.categoriess {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 40%;
+    max-width: 800px;
+
+    text-align: center;
+}
+
+.category {
+    display: inline-block;
+
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.category img {
+    width: 90px;
+    height: 90px;
+}
+
+.category h3 {
+    margin-top: 7px;
 }

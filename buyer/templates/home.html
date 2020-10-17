@@ -20,8 +20,20 @@
 				</form>
 				<input class="test" type="image" src="{% static 'images/search.png' %}" alt="Search Submit" />
 			</div>
-			<div class="categories">
+			<div class="or-select-one">
 				<b>or</b>&nbspselect one
+			</div>
+			<div class="categoriess">
+				{% for categoryInfo in categoriesInfo %}
+					<div class="category">
+						<a href="{% url 'category' %}?text={{ categoryInfo.0 }}">
+							{% with 'images/'|add:categoryInfo.1 as imagePath %}
+								<img src="{% static imagePath %}" alt="{{ categoryInfo.0 }}">
+							{% endwith %}
+						</a>
+						<h3>Smartphone</h3>
+					</div>
+				{% endfor %}
 			</div>
 		</div>
 	</body>
