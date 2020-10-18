@@ -30,7 +30,24 @@
 					{% endfor %}
 				</div>
 			</form>
-			{{ results }}
+			<div class="results">
+				<div class="products">
+					{% for product in products %}
+						<div class="product">
+							{% with "images/products/"|add:product.imagePath as productImagePath %}
+								<img src="{% static productImagePath %}" alt="iPhone SE">
+							{% endwith %}
+							<j1>{{ product.name }}</j1>
+							<j2><b>${{ product.price }}</b></j2>
+							<ul>
+								{% for feature in product.features %}
+									<li>{{ feature }}</li>
+								{% endfor %}
+							</ul>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
 		</div>
 	</body>
 </html>

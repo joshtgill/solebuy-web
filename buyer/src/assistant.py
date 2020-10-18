@@ -22,12 +22,4 @@ class Assistant:
             elif filterBitmap.count(1) == len(userIdMap) - 1:
                 recommendedProducts.get('secondary').append(product)
 
-        # Provide recommended products
-        report = ''
-        for section in recommendedProducts:
-            productNames = [product.get('name') for product in recommendedProducts.get(section)]
-            if productNames:
-                report += '{}: {}'.format(section.capitalize(), ', '.join(productNames))
-            report += '\n'
-
-        return report
+        return recommendedProducts

@@ -30,13 +30,13 @@ def category(request):
 
     # Find the recommended product(s)
     updateIdMap(request) if request.method == 'POST' else resetIdMap(request, len(categoryData.get('assisters')))
-    results = Assistant().findProducts(categoryData, request.session['idMap'])
+    products = Assistant().findProducts(categoryData, request.session['idMap'])
 
     # Build content for template
     content = {'searchForm': form, 'categoryData': categoryData,
                'assisters': categoryData.get('assisters'),
                'idMap': request.session['idMap'],
-               'results': results}
+               'products': products.get('primary')}
 
     return render(request, 'category.html', content)
 
