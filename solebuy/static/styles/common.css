@@ -1,13 +1,13 @@
 body {
-    background-color: rgb(242, 242, 242);
-    padding-top: 53px;
-    height: calc(100% - 53px);
     margin: 0;
     font-family: Roboto;
 }
 
 .content {
     position: relative;
-
     width: 100%;
+    height: calc(100% - 53px);
+
+    padding-top: 53px;
+    background-color: rgb(242, 242, 242);
 }
