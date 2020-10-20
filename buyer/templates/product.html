@@ -1,0 +1,17 @@
+<html>
+	{% load static %}
+	{% load helper %}
+	<head>
+		<title>SoleBuy - {{ searchForm.text.value }}</title>
+
+		<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="{% static 'styles/common.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'styles/category.css' %}">
+	</head>
+	<body>
+		{% include "topnav/topnav_with_search.html" %}
+
+		<div class="content">
+		</div>
+	</body>
+</html>

@@ -67,6 +67,11 @@
     margin-top: 35px;
 }
 
+.products a {
+    color: rgb(32, 32, 32);
+    text-decoration: none;
+}
+
 .product {
     display: inline-block;
     width: 300px;
