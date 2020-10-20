@@ -81,6 +81,15 @@ def resetIdMap(request, numAssisters):
 def product(request):
     form = ProductForm(request.GET)
     if form.is_valid():
-        print(form.cleaned_data.get('name'))
+        urlName = form.cleaned_data.get('name')
+        return render(request, 'product.html', {'searchForm': SearchForm(), 'product': getProductByUrlName(urlName)})
 
     return render(request, 'product.html', {'searchForm': SearchForm()})
+
+
+def getProductByUrlName(urlName):
+    for product in getCategoriesData()[0].get('products'):
+        if product.get('urlName') == urlName:
+            return product
+
+    return None

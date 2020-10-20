@@ -2,16 +2,25 @@
 	{% load static %}
 	{% load helper %}
 	<head>
-		<title>SoleBuy - {{ searchForm.text.value }}</title>
+		<title>SoleBuy - {{ product.name }}</title>
 
 		<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="{% static 'styles/common.css' %}">
-		<link rel="stylesheet" type="text/css" href="{% static 'styles/category.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'styles/product.css' %}">
 	</head>
 	<body>
 		{% include "topnav/topnav_with_search.html" %}
 
 		<div class="content">
+			<div class="product">
+				<j1>{{ product.name }}</j1>
+				<hr>
+				<j2><b>${{ product.price }}</b></j2>
+				{% with "images/products/"|add:product.imagePath as productImagePath %}
+					<img src="{% static productImagePath %}" alt="{{ product.name }}">
+				{% endwith %}
+				</div>
+			</div>
 		</div>
 	</body>
 </html>

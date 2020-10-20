@@ -1,0 +1,38 @@
+.content {
+    background-color: rgb(255, 255, 255);
+}
+
+.product {
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translate(-50%, 0%);
+
+    margin-top: 3%;
+    padding: 20px;
+    text-align: center;
+}
+
+.product j1 {
+    display: block;
+    font-size: 35px;
+    color: rgb(32, 32, 32);
+}
+
+.product hr {
+    display: block;
+    width: 150px;
+}
+
+.product j2 {
+    display: block;
+    font-size: 25px;
+    color: rgb(32, 32, 32);
+}
+
+.product img {
+    display: block;
+    width: 350px;
+    height: 350px;
+    margin-top: 20px;
+}
