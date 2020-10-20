@@ -23,7 +23,7 @@ def category(request):
         return render(request, 'category.html')
 
     # Get category data from search text
-    categoryData = getCategoryData(form.cleaned_data['text'])
+    categoryData = getCategoryData(form.cleaned_data['name'])
     if not categoryData:
         content = {'searchForm': form, 'filtersWidth': str(50), 'filterWidth': '100%'}
         return render(request, 'category.html', content)

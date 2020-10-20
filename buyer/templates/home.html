@@ -25,7 +25,7 @@
 			</div>
 			<div class="categories">
 				{% for categoryInfo in categoriesInfo %}
-					<a href="{% url 'category' %}?text={{ categoryInfo.0 }}">
+					<a href="{% url 'category' %}?name={{ categoryInfo.0 }}">
 						<div class="category">
 								{% with 'images/'|add:categoryInfo.1 as imagePath %}
 									<img src="{% static imagePath %}" alt="{{ categoryInfo.0 }}">
