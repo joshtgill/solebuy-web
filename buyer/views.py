@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from solebuy.forms import SearchForm
-from .forms import FilterForm, ProductForm
+from .forms import FilterForm
 from buyer.src.assistant import Assistant
 import json
 
@@ -76,20 +76,3 @@ def updateIdMap(request):
 
 def resetIdMap(request, numAssisters):
     request.session['idMap'] = [[] for i in range(numAssisters)]
-
-
-def product(request):
-    form = ProductForm(request.GET)
-    if form.is_valid():
-        urlName = form.cleaned_data.get('name')
-        return render(request, 'product.html', {'searchForm': SearchForm(), 'product': getProductByUrlName(urlName)})
-
-    return render(request, 'product.html', {'searchForm': SearchForm()})
-
-
-def getProductByUrlName(urlName):
-    for product in getCategoriesData()[0].get('products'):
-        if product.get('urlName') == urlName:
-            return product
-
-    return None

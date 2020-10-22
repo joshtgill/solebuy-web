@@ -34,20 +34,18 @@
 				<form action="product/" method="GET">
 					<div class="products">
 						{% for product in products %}
-							<a href="{% url 'product' %}?name={{ product.urlName }}">
-								<div class="product">
-									{% with "images/products/"|add:product.imagePath as productImagePath %}
-										<img src="{% static productImagePath %}" alt="iPhone SE">
-									{% endwith %}
-									<j1>{{ product.name }}</j1>
-									<j2><b>${{ product.price }}</b></j2>
-									<ul>
-										{% for feature in product.features %}
-											<li>{{ feature }}</li>
-										{% endfor %}
-									</ul>
-								</div>
-							</a>
+							<div class="product">
+								{% with "images/products/"|add:product.imagePath as productImagePath %}
+									<img src="{% static productImagePath %}" alt="iPhone SE">
+								{% endwith %}
+								<j1>{{ product.name }}</j1>
+								<j2><b>${{ product.price }}</b></j2>
+								<ul>
+									{% for feature in product.features %}
+										<li>{{ feature }}</li>
+									{% endfor %}
+								</ul>
+							</div>
 						{% endfor %}
 					</div>
 				</form>
