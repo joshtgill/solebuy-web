@@ -13,23 +13,76 @@
 
 .product-popup .content {
     position: relative;
-    width: 500px;
+    width: 600px;
     height: 500px;
-    top: 50%;
+    top: 100px;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 0%);
 
-    padding: 20px;
+    padding: 20px 20px 20px 0px;
+    text-align: center;
     background-color: rgb(255, 255, 255);
     border: 1px solid rgb(221, 221, 221);
     border-radius: 5px;
 }
 
-.product-popup .close {
+.product-popup .content .close {
     position: absolute;
     top: 0px;
     right: 10px;
-    color: #aaaaaa;
-    font-size: 30px;
+
+    color: rgb(170, 170, 170);
+    font-size: 35px;
     font-weight: bold;
+    cursor: pointer;
+}
+
+.product-popup .content .header {
+    position: relative;
+    display: block;
+    left: 50%;
+    transform: translate(-50%, 0%);
+
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+.product-popup .content .header j1 {
+    display: block;
+
+    font-size: 30px;
+    color: rgb(32, 32, 32);
+}
+
+.product-popup .content .header hr {
+    width: 100px;
+
+    margin-top: 2px;
+    margin-bottom: 3px;
+}
+
+.product-popup .content .header j2 {
+    display: block;
+
+    font-size: 20px;
+    color: rgb(32, 32, 32);
+    font-weight: bold;
+}
+
+.product-popup .content .info {
+    position: relative;
+}
+
+.product-popup .content .info img {
+    float: left;
+    left: 0px;
+    width: 300px;
+    height: 300px;
+}
+
+.product-popup .content .info .procons {
+    float: left;
+    position: relative;
+    width: 300px;
+    height: 300px;
 }
