@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from solebuy.forms import SearchForm
+from solebuy.forms import CategoryForm
 
 
 def about(request):
-    return render(request, 'about.html', {'searchForm': SearchForm()})
+    return render(request, 'about.html', {'categoryForm': CategoryForm()})

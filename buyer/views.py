@@ -1,53 +1,55 @@
 from django.shortcuts import render
-from solebuy.forms import SearchForm
+from solebuy.forms import CategoryForm
 from .forms import FilterForm
 from buyer.src.assistant import Assistant
 import json
 
 
 def home(request):
-    # Get category names and icon path
-    categoriesData = getCategoriesData()
-    categoriesInfo = [(categoryData.get('name'), categoryData.get('iconPath')) for categoryData in categoriesData]
+    # Get all category names and associated icon path
+    categoriesInfo = [(data.get('name'), data.get('iconPath')) for data in getCategoriesData()]
 
     # Build content for template
-    content = {'searchForm': SearchForm(), 'categoriesInfo': categoriesInfo}
+    content = {'categoryForm': CategoryForm(), 'categoriesInfo': categoriesInfo}
 
     return render(request, 'home.html', content)
 
 
 def category(request):
-    # Get the search
-    form = SearchForm(request.GET)
-    if not form.is_valid():
+    # Attempt to get category name
+    name = ''
+    form = CategoryForm(request.GET)
+    if form.is_valid():
+        name = form.cleaned_data['name']
+    else:
         return render(request, 'category.html')
 
-    # Get category data from search text
-    categoryData = getCategoryData(form.cleaned_data['name'])
-    if not categoryData:
-        content = {'searchForm': form, 'filtersWidth': str(50), 'filterWidth': '100%'}
+    # Attempt to get category data
+    data = getCategoryDataByName(name)
+    if not data:
+        content = {'categoryForm': form, 'filtersWidth': str(50), 'filterWidth': '100%'}
         return render(request, 'category.html', content)
 
     # Find the recommended product(s)
-    updateIdMap(request) if request.method == 'POST' else resetIdMap(request, len(categoryData.get('assisters')))
-    products = Assistant().findProducts(categoryData, request.session['idMap']).get('primary')
+    updateIdMap(request) if request.method == 'POST' else resetIdMap(request, len(data.get('assisters')))
+    products = Assistant().findProducts(data, request.session['idMap']).get('primary')
     products = sorted(products, key=lambda product: product.get('price'))
 
     # Build content for template
-    content = {'searchForm': form, 'categoryData': categoryData,
-               'assisters': categoryData.get('assisters'),
+    content = {'categoryForm': form, 'data': data,
+               'assisters': data.get('assisters'),
                'idMap': request.session['idMap'],
                'products': products}
 
     return render(request, 'category.html', content)
 
 
-def getCategoryData(searchText):
+def getCategoryDataByName(name):
     categoriesData = getCategoriesData()
 
-    for categoryData in categoriesData:
-        if searchText == categoryData.get('name'):
-            return categoryData
+    for data in categoriesData:
+        if name == data.get('name'):
+            return data
 
     return None
 
