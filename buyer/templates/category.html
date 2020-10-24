@@ -34,7 +34,7 @@
 				<form action="product/" method="GET">
 					<div class="products">
 						{% for product in products %}
-							<div class="product">
+							<div class="product" onclick="openProductPopup({{ product }})">
 								{% with "images/products/"|add:product.imagePath as productImagePath %}
 									<img src="{% static productImagePath %}" alt="iPhone SE">
 								{% endwith %}
@@ -51,5 +51,9 @@
 				</form>
 			</div>
 		</div>
+
+		{% include "product_popup.html" %}
 	</body>
+
+	<script src="{% static 'scripts/category.js' %}"></script>
 </html>
