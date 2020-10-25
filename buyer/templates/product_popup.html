@@ -5,12 +5,14 @@
     <div class="content">
         <div class="close">&times;</div>
         <div class="header">
-            <j1 id="name"></j1>
+            <j1 id="name">{{ product.name }}</j1>
             <hr>
-            <j2 id="price"></j2>
+            <j2 id="price">${{ product.price }}</j2>
         </div>
         <div class="info">
-            <img id="image" alt="iPhone SE">
+            {% with "images/products/"|add:product.imagePath as productImagePath %}
+                <img src="{% static productImagePath %}" alt="{{ product.name }}">
+            {% endwith %}
             <div class="procons">
             </div>
         <div>

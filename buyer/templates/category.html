@@ -32,25 +32,32 @@
 			</form>
 			<div class="results">
 				<div class="products">
-					{% for product in products %}
-						<div class="product" onclick="openProductPopup({{ product }})">
-							{% with "images/products/"|add:product.imagePath as productImagePath %}
-								<img src="{% static productImagePath %}" alt="iPhone SE">
-							{% endwith %}
-							<j1>{{ product.name }}</j1>
-							<j2><b>${{ product.price }}</b></j2>
-							<ul>
-								{% for feature in product.features %}
-									<li>{{ feature }}</li>
-								{% endfor %}
-							</ul>
-						</div>
-					{% endfor %}
+					<form id="productForm" action="" method="POST">
+						<input id="productInput" type="hidden" name="urlName"/>
+						{% csrf_token %}
+						{% for product in products %}
+							<div class="product" onclick="submitProductForm('{{ product.urlName }}')">
+								{% with "images/products/"|add:product.imagePath as productImagePath %}
+									<img src="{% static productImagePath %}" alt="iPhone SE">
+								{% endwith %}
+								<j1>{{ product.name }}</j1>
+								<j2><b>${{ product.price }}</b></j2>
+								<ul>
+									{% for feature in product.features %}
+										<li>{{ feature }}</li>
+									{% endfor %}
+								</ul>
+							</div>
+						{% endfor %}
+					</form>
 				</div>
 			</div>
 		</div>
 
-		{% include "product_popup.html" %}
+		{% if product != None %}
+			{% include "product_popup.html" %}
+		{% endif %}
+
 	</body>
 
 	<script src="{% static 'scripts/category.js' %}"></script>

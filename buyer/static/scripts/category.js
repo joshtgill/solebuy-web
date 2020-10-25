@@ -1,14 +1,15 @@
 var productPopup = document.getElementById('productPopup');
+var productInput = document.getElementById('productInput');
+var productForm = document.getElementById('productForm');
 
-function openProductPopup(product) {
-    document.getElementById('name').innerText = product['name'];
-    document.getElementById('price').innerText = `$${product['price']}`;
-    document.getElementById('image').src = `/static/images/products/${product['imagePath']}`;
-    productPopup.style.display = "block";
+function submitProductForm(productUrlName) {
+    productInput.value = productUrlName;
+    productForm.submit();
 }
 
 function closeProductPopup() {
-    productPopup.style.display = 'none';
+    productInput.value = null;
+    productForm.submit();
 }
 
 document.getElementsByClassName('close')[0].onclick = function() {
