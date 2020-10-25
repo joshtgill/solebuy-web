@@ -13,7 +13,19 @@
             {% with "images/products/"|add:product.imagePath as productImagePath %}
                 <img src="{% static productImagePath %}" alt="{{ product.name }}">
             {% endwith %}
-            <div class="procons">
+            <div class="summaries">
+                <div class="goodbad" style="margin-bottom: 20px; border: 1.5px solid rgb(24, 173, 24)">
+                    <j>The good</j>
+                    <p>
+                        {{ product.good }}
+                    </p>
+                </div>
+                <div class="goodbad" style="margin-top: 20px; border: 1.5px solid rgb(173, 24, 24);">
+                    <j>The bad</j>
+                    <p>
+                        {{ product.bad }}
+                    </p>
+                </div>
             </div>
         <div>
     </div>

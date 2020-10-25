@@ -13,7 +13,7 @@
 
 .product-popup .content {
     position: relative;
-    width: 600px;
+    width: 800px;
     height: 500px;
     top: 100px;
     left: 50%;
@@ -76,13 +76,35 @@
 .product-popup .content .info img {
     float: left;
     left: 0px;
-    width: 300px;
-    height: 300px;
+    width: 350px;
+    height: 350px;
 }
 
-.product-popup .content .info .procons {
+.product-popup .content .info .summaries {
     float: left;
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 350px;
+}
+
+.product-popup .content .info .goodbad {
+    position: relative;
+    top: 0px;
+    width: 400px;
+
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgb(245, 245, 245);
+    text-align: left;
+}
+
+.product-popup .content .info .goodbad j {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.product-popup .content .info .goodbad p {
+    font-size: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
