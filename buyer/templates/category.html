@@ -40,13 +40,24 @@
 								{% with "images/products/"|add:product.imagePath as productImagePath %}
 									<img src="{% static productImagePath %}" alt="iPhone SE">
 								{% endwith %}
-								<j1>{{ product.name }}</j1>
-								<j2><b>${{ product.price }}</b></j2>
-								<ul>
-									{% for feature in product.features %}
-										<li>{{ feature }}</li>
+								<div class="summary">
+									<h1>{{ product.name }}</h1>
+									<h2><b>${{ product.price }}</b></h2>
+									<hr>
+									{% for pro in product.pros %}
+										<div class="procon">
+											<img src="{% static 'images/plus.png' %}" alt="Plus">
+											<h1>{{ pro }}</h1>
+										</div>
 									{% endfor %}
-								</ul>
+									<div class="spacer"></div>
+									{% for con in product.cons %}
+										<div class="procon">
+											<img src="{% static 'images/minus.png' %}" alt="Plus">
+											<h1>{{ con }}</h1>
+										</div>
+									{% endfor %}
+								</div>
 							</div>
 						{% endfor %}
 					</form>
