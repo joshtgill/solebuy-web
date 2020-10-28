@@ -74,7 +74,7 @@
 
 .product {
     display: inline-block;
-    width: 450px;
+    width: 470px;
 
     margin-left: 20px;
     margin-right: 20px;
@@ -95,29 +95,30 @@
     padding-bottom: 15px;
 }
 
-.product .summary {
+.product .details {
     position: relative;
     float: left;
     width: 225px;
     height: 255px;
 
+    padding-right: 20px;
     border-radius: 0px 10px 10px 0px;
     background-color: rgb(245, 245, 245);
 }
 
-.product .summary h1 {
+.product .details h1 {
     font-size: 20px;
     margin-bottom: 0px;
     font-weight: normal;
 }
 
-.product .summary h2 {
+.product .details h2 {
     font-size: 15px;
     margin-top: 2px;
     margin-bottom: 3px;
 }
 
-.product .summary .procon {
+.product .details .procon {
     display: flex;
     width: 100%;
 
@@ -127,23 +128,24 @@
     margin-left: 15px;
 }
 
-.product .summary hr {
-    width: 50%;
-}
-
-.product .summary .procon img {
+.product .details .procon img {
     width: 12px;
     height: 12px;
     padding: 0px;
 }
 
-.product .summary .procon h1 {
+.product .details .procon h1 {
     position: relative;
     margin: 0px;
-    margin-left: 5px;
+    margin-left: 10px;
     font-size: 18px;
+    text-align: left;
 }
 
-.product .summary .spacer {
+.product .details hr {
+    width: 50%;
+}
+
+.product .details .spacer {
     height: 5px;
 }
