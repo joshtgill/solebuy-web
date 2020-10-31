@@ -3,6 +3,3 @@ __pycache__
 
 # Local files
 local/
-
-# Database file
-db.sqlite3

@@ -87,7 +87,7 @@
     height: 350px;
 }
 
-.product-popup .content .info .goodbad {
+.product-popup .content .info .proconSummary {
     position: relative;
     top: 0px;
     width: 400px;
@@ -98,12 +98,12 @@
     text-align: left;
 }
 
-.product-popup .content .info .goodbad j {
+.product-popup .content .info .proconSummary j {
     font-size: 18px;
     font-weight: bold;
 }
 
-.product-popup .content .info .goodbad p {
+.product-popup .content .info .proconSummary p {
     font-size: 15px;
     margin-top: 5px;
     margin-bottom: 5px;

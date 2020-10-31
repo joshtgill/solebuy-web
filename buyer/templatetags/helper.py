@@ -5,11 +5,11 @@ register = template.Library()
 
 
 @register.filter(name='buildButtonStyle')
-def buildButtonStyle(buttonValue, filterIdMap):
+def buildButtonStyle(buttonValue, AFIdMap):
     assisterId = int(buttonValue.split('.')[0])
     filterId = int(buttonValue.split('.')[1])
 
-    if filterId in filterIdMap[assisterId]:
+    if filterId in AFIdMap[assisterId]:
         return 'border: 3px solid rgb(13, 147, 255);'
     else:
         return 'border: 1px solid rgb(170, 170, 170);'
@@ -18,3 +18,13 @@ def buildButtonStyle(buttonValue, filterIdMap):
 @register.filter(name='determineButtonValue')
 def determineButtonValue(assisterId, filterId):
     return '{}.{}'.format(assisterId, filterId)
+
+
+@register.filter(name='buildCategoryIconPath')
+def buildCategoryIconPath(category):
+    return 'images/category/{}/icon.png'.format(category.lower())
+
+
+@register.filter(name='buildProductImagePath')
+def buildProductImagePath(categoryName, imageFileName):
+    return 'images/category/{}/products/{}'.format(categoryName.lower(), imageFileName)

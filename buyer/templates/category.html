@@ -15,14 +15,14 @@
 			<form action="" method="POST">
 				{% csrf_token %}
 				<div class="filters">
-					{% for assister in assisters %}
+					{% for assister in category.assisters.all %}
 						<div class="filter">
 							<h3>{{ assister.prompt }}</h3>
 							<hr>
 							{% with forloop.counter0|stringformat:"i" as assisterId %}
-								{% for filterText in assister.filters %}
+								{% for filterText in assister.filters.all %}
 									{% with assisterId|determineButtonValue:forloop.counter0 as buttonValue %}
-										<button type="Submit" name="button" value={{ buttonValue }} style="{{ buttonValue|buildButtonStyle:filterIdMap }}">{{ filterText }}</button>
+										<button type="Submit" name="button" value={{ buttonValue }} style="{{ buttonValue|buildButtonStyle:AFIdMap }}">{{ filterText.contents }}</button>
 									{% endwith %}
 								{% endfor %}
 							{% endwith %}
@@ -33,28 +33,28 @@
 			<div class="results">
 				<div class="products">
 					<form id="productForm" action="" method="POST">
-						<input id="productInput" type="hidden" name="urlName"/>
+						<input id="productInput" type="hidden" name="idd"/>
 						{% csrf_token %}
-						{% for product in products %}
-							<div class="product" onclick="submitProductForm('{{ product.urlName }}')">
-								{% with "images/products/"|add:product.imagePath as productImagePath %}
-									<img src="{% static productImagePath %}" alt="iPhone SE">
+						{% for product in filteredProducts %}
+							<div class="product" onclick="submitProductForm('{{ product.id }}')">
+								{% with category.name|buildProductImagePath:product.imageFileName as productImagePath %}
+									<img src="{% static productImagePath %}" alt="{{ product.name }}">
 								{% endwith %}
 								<div class="details">
 									<h1>{{ product.name }}</h1>
 									<h2><b>${{ product.price }}</b></h2>
 									<hr>
-									{% for pro in product.pros %}
+									{% for pro in product.pros.all %}
 										<div class="procon">
 											<img src="{% static 'images/plus.png' %}" alt="Plus">
-											<h1>{{ pro }}</h1>
+											<h1>{{ pro.contents }}</h1>
 										</div>
 									{% endfor %}
 									<div class="spacer"></div>
-									{% for con in product.cons %}
+									{% for con in product.cons.all %}
 										<div class="procon">
 											<img src="{% static 'images/minus.png' %}" alt="Plus">
-											<h1>{{ con }}</h1>
+											<h1>{{ con.contents }}</h1>
 										</div>
 									{% endfor %}
 								</div>
@@ -65,7 +65,7 @@
 			</div>
 		</div>
 
-		{% if product != None %}
+		{% if popupProduct %}
 			{% include "product_popup.html" %}
 		{% endif %}
 

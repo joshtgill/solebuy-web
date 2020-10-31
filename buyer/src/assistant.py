@@ -1,25 +1,26 @@
 class Assistant:
 
-    def findProducts(self, category, userIdMap):
-        recommendedProducts = {'primary': [], 'secondary': []}
-        for product in category.get('products'):
-            filterBitmap = [0] * len(userIdMap)
-            for assisterId in range(len(userIdMap)):
+    def filterProducts(self, products, AFIdMap):
+        filteredProducts = {'primary': [], 'secondary': []}
+        for product in products:
+            filterBitmap = [0] * len(AFIdMap)
+            for assisterId in range(len(AFIdMap)):
                 # If no filters exists for asssister, then pass it
-                if not userIdMap[assisterId]:
+                if not AFIdMap[assisterId]:
                     filterBitmap[assisterId] = 1
                     continue
 
                 # Compare product's filters with the user's filters
-                for filterId in product.get('idMap')[assisterId]:
-                    if filterId in userIdMap[assisterId]:
+                for assisterFilterId in product.assisterFilterIds.all():
+                    if (assisterFilterId.assisterId == assisterId and
+                        assisterFilterId.filterId in AFIdMap[assisterId]):
                         filterBitmap[assisterId] = 1
                         break
 
             # Store any primary or secondary matches
-            if filterBitmap.count(1) == len(userIdMap):
-                recommendedProducts.get('primary').append(product)
-            elif filterBitmap.count(1) == len(userIdMap) - 1:
-                recommendedProducts.get('secondary').append(product)
+            if filterBitmap.count(1) == len(AFIdMap):
+                filteredProducts.get('primary').append(product)
+            elif filterBitmap.count(1) == len(AFIdMap) - 1:
+                filteredProducts.get('secondary').append(product)
 
-        return recommendedProducts
+        return filteredProducts

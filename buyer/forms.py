@@ -6,4 +6,4 @@ class FilterForm(forms.Form):
 
 
 class ProductForm(forms.Form):
-    urlName = forms.CharField()
+    idd = forms.CharField()
