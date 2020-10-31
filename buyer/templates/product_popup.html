@@ -12,7 +12,7 @@
             <j2 id="price">${{ popupProduct.price }}</j2>
         </div>
         <div class="info">
-            {% with category.name|buildProductImagePath:popupProduct.imageFileName as productImagePath %}
+            {% with categoryData.name|buildProductImagePath:popupProduct.imageFileName as productImagePath %}
                 <img src="{% static productImagePath %}" alt="{{ popupProduct.name }}">
             {% endwith %}
             <div class="summaries">

@@ -15,14 +15,14 @@
 			<form action="" method="POST">
 				{% csrf_token %}
 				<div class="filters">
-					{% for assister in category.assisters.all %}
+					{% for assister in categoryData.assisters %}
 						<div class="filter">
 							<h3>{{ assister.prompt }}</h3>
 							<hr>
 							{% with forloop.counter0|stringformat:"i" as assisterId %}
-								{% for filterText in assister.filters.all %}
+								{% for filter in assister.filters %}
 									{% with assisterId|determineButtonValue:forloop.counter0 as buttonValue %}
-										<button type="Submit" name="button" value={{ buttonValue }} style="{{ buttonValue|buildButtonStyle:AFIdMap }}">{{ filterText.contents }}</button>
+										<button type="Submit" name="button" value={{ buttonValue }} style="{{ buttonValue|buildButtonStyle:AFIdMap }}">{{ filter }}</button>
 									{% endwith %}
 								{% endfor %}
 							{% endwith %}
@@ -35,23 +35,23 @@
 					<form id="productForm" action="" method="POST">
 						<input id="productInput" type="hidden" name="idd"/>
 						{% csrf_token %}
-						{% for product in filteredProducts %}
+						{% for product in categoryData.filteredProducts %}
 							<div class="product" onclick="submitProductForm('{{ product.id }}')">
-								{% with category.name|buildProductImagePath:product.imageFileName as productImagePath %}
+								{% with categoryData.name|buildProductImagePath:product.imageFileName as productImagePath %}
 									<img src="{% static productImagePath %}" alt="{{ product.name }}">
 								{% endwith %}
 								<div class="details">
 									<h1>{{ product.name }}</h1>
 									<h2><b>${{ product.price }}</b></h2>
 									<hr>
-									{% for pro in product.pros.all %}
+									{% for pro in product.pros %}
 										<div class="procon">
 											<img src="{% static 'images/plus.png' %}" alt="Plus">
 											<h1>{{ pro.contents }}</h1>
 										</div>
 									{% endfor %}
 									<div class="spacer"></div>
-									{% for con in product.cons.all %}
+									{% for con in product.cons %}
 										<div class="procon">
 											<img src="{% static 'images/minus.png' %}" alt="Plus">
 											<h1>{{ con.contents }}</h1>

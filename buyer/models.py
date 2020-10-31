@@ -1,18 +1,27 @@
 from django.db import models
 
 
-LENGTH_SHORT = 10
-LENGTH_MEDIUM = 30
-LENGTH_LONG = 50
+LENGTH_SHORT = 30
+LENGTH_MEDIUM = 50
 LENGTH_XLONG = 300
 
 
-class Pro(models.Model):
-    contents = models.CharField(max_length=LENGTH_LONG)
+class Category(models.Model):
+    name = models.CharField(max_length=LENGTH_SHORT)
 
 
-class Con(models.Model):
-    contents = models.CharField(max_length=LENGTH_LONG)
+class Assister(models.Model):
+    name = models.CharField(max_length=LENGTH_SHORT)
+    prompt = models.CharField(max_length=LENGTH_MEDIUM)
+    decisive = models.BooleanField()
+
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+
+
+class Filter(models.Model):
+    contents = models.CharField(max_length=LENGTH_SHORT)
+
+    assister = models.ForeignKey(Assister, on_delete=models.CASCADE)
 
 
 class AssisterFilterId(models.Model):
@@ -21,29 +30,23 @@ class AssisterFilterId(models.Model):
 
 
 class Product(models.Model):
-    name = models.CharField(max_length=LENGTH_LONG)
+    name = models.CharField(max_length=LENGTH_MEDIUM)
     price = models.FloatField()
-    imageFileName = models.CharField(max_length=LENGTH_LONG)
-    pros = models.ManyToManyField(Pro)
-    cons = models.ManyToManyField(Con)
-    assisterFilterIds = models.ManyToManyField(AssisterFilterId)
+    imageFileName = models.CharField(max_length=LENGTH_MEDIUM)
     prosSummary = models.CharField(max_length=LENGTH_XLONG)
     consSummary = models.CharField(max_length=LENGTH_XLONG)
+    assisterFilterIds = models.ManyToManyField(AssisterFilterId)
+
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
 
-class Filter(models.Model):
+class Pro(models.Model):
     contents = models.CharField(max_length=LENGTH_MEDIUM)
 
-
-class Assister(models.Model):
-    name = models.CharField(max_length=LENGTH_MEDIUM)
-    prompt = models.CharField(max_length=LENGTH_LONG)
-    filters = models.ManyToManyField(Filter)
-    decisive = models.BooleanField()
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
 
-class Category(models.Model):
-    name = models.CharField(max_length=LENGTH_MEDIUM)
-    iconFileName = models.CharField(max_length=LENGTH_MEDIUM)
-    assisters = models.ManyToManyField(Assister)
-    products = models.ManyToManyField(Product)
+class Con(models.Model):
+    contents = models.CharField(max_length=LENGTH_MEDIUM)
+
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)

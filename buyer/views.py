@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from solebuy.forms import CategoryForm
 from .forms import FilterForm, ProductForm
-from .models import Category
+from .models import *
 from buyer.src.assistant import Assistant
 
 
@@ -43,20 +43,20 @@ def category(request):
         # Product form submitted. Get product data for popup
         productForm = ProductForm(request.POST)
         if productForm.is_valid():
-            popupProduct = category.products.all().get(id=productForm.cleaned_data['idd'])
+            popupProduct = Product.objects.get(id=productForm.cleaned_data['idd'])
     else:
         popupProduct = None
-        resetIdMap(request, len(category.assisters.all()))
+        resetIdMap(request, len(Assister.objects.filter(category=category)))
 
     # Find recommended products based on AF selections
-    filteredProducts = Assistant().filterProducts(category.products.all(),
-                                             request.session['AFIdMap']).get('primary')
+    filteredProducts = Assistant().filterProducts(Product.objects.filter(category=category),
+                                                  request.session['AFIdMap']).get('primary')
     filteredProducts = sorted(filteredProducts, key=lambda product: product.price)
 
     # Build content for template
-    content = {'categoryForm': categoryForm, 'category': category,
-               'AFIdMap': request.session['AFIdMap'],
-               'filteredProducts': filteredProducts, 'popupProduct': popupProduct}
+    content = {'categoryForm': categoryForm, 'categoryData': serializeCategory(category, filteredProducts),
+               'AFIdMap': request.session['AFIdMap'], 'filteredProducts': filteredProducts,
+               'popupProduct': serializeProduct(popupProduct, False) if popupProduct else None}
 
     return render(request, 'category.html', content)
 
@@ -75,3 +75,35 @@ def updateIdMap(request, selectValue):
 
 def resetIdMap(request, numAssisters):
     request.session['AFIdMap'] = [[] for i in range(numAssisters)]
+
+
+def serializeCategory(category, filteredProducts):
+    # Category data
+    categoryData = {'name': category.name, 'assisters': [], 'filteredProducts': []}
+
+    # Assister data
+    for assister in Assister.objects.filter(category=category):
+        assisterData = {'name': assister.name, 'prompt': assister.prompt,
+                        'filters': [filterr.contents for filterr in Filter.objects.filter(assister=assister)]}
+        categoryData.get('assisters').append(assisterData)
+
+    # Product data
+    for product in filteredProducts:
+        categoryData.get('filteredProducts').append(serializeProduct(product))
+
+    return categoryData
+
+
+def serializeProduct(product, serializeProcons=True):
+    productData = {'id': product.id, 'name': product.name, 'price': product.price,
+                   'imageFileName': product.imageFileName, 'prosSummary': product.prosSummary,
+                   'consSummary': product.consSummary, 'pros': [], 'cons': []}
+
+    if serializeProcons:
+        for pro in Pro.objects.filter(product=product):
+            productData.get('pros').append(pro)
+
+        for con in Con.objects.filter(product=product):
+            productData.get('cons').append(pro)
+
+    return productData
