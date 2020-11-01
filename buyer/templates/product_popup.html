@@ -7,26 +7,20 @@
     <div class="content">
         <div class="close">&times;</div>
         <div class="header">
-            <j1 id="name">{{ popupProduct.name }}</j1>
+            <j1 id="name"></j1>
             <hr>
-            <j2 id="price">${{ popupProduct.price }}</j2>
+            <j2 id="price"></j2>
         </div>
         <div class="info">
-            {% with categoryData.name|buildProductImagePath:popupProduct.imageFileName as productImagePath %}
-                <img src="{% static productImagePath %}" alt="{{ popupProduct.name }}">
-            {% endwith %}
+            <img id="image">
             <div class="summaries">
                 <div class="proconSummary" style="margin-bottom: 20px; border: 1.5px solid rgb(24, 173, 24)">
-                    <j>The good</j>
-                    <p>
-                        {{ popupProduct.prosSummary }}
-                    </p>
+                    <j>Who should buy</j>
+                    <p id="prosSummary"></p>
                 </div>
                 <div class="proconSummary" style="margin-top: 20px; border: 1.5px solid rgb(173, 24, 24);">
-                    <j>The bad</j>
-                    <p>
-                        {{ popupProduct.consSummary }}
-                    </p>
+                    <j>Who should pass</j>
+                    <p id="consSummary"></p>
                 </div>
             </div>
         <div>

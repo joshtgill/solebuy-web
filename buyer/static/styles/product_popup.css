@@ -1,5 +1,5 @@
 .product-popup {
-    display: block;
+    display: none;
     position: fixed;
     z-index: 2;
     left: 0;

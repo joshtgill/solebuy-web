@@ -1,26 +1,30 @@
 var productPopup = document.getElementById('productPopup');
-var productInput = document.getElementById('productInput');
-var productForm = document.getElementById('productForm');
 
 
-function submitProductForm(productId) {
-    productInput.value = productId;
-    productForm.submit();
+function displayProductPopup(productId) {
+    product = JSON.parse(document.getElementById(productId).textContent);
+
+    document.getElementById('name').innerText = product['name'];
+    document.getElementById('price').innerText = `$${product['price']}`;
+    document.getElementById('image').src = `/static/images/smartphone/products/${product['imageFileName']}`;
+    document.getElementById('prosSummary').innerText = product['prosSummary'];
+    document.getElementById('consSummary').innerText = `$${product['consSummary']}`;
+
+    productPopup.style.display = "block";
 }
 
 
-function closeProductPopup() {
-    productInput.value = null;
-    productForm.submit();
+function hideProductPopup() {
+    productPopup.style.display = 'none';
 }
 
 
 document.getElementsByClassName('close')[0].onclick = function() {
-    closeProductPopup();
+     hideProductPopup();
 }
 
 
 window.onclick = function(event) {
     if (event.target == productPopup)
-        closeProductPopup()
+        hideProductPopup()
 }

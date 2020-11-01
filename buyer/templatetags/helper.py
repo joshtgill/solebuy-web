@@ -22,9 +22,9 @@ def determineButtonValue(assisterId, filterId):
 
 @register.filter(name='buildCategoryIconPath')
 def buildCategoryIconPath(category):
-    return 'images/category/{}/icon.png'.format(category.lower())
+    return 'images/{}/icon.png'.format(category.lower())
 
 
 @register.filter(name='buildProductImagePath')
 def buildProductImagePath(categoryName, imageFileName):
-    return 'images/category/{}/products/{}'.format(categoryName.lower(), imageFileName)
+    return 'images/{}/products/{}'.format(categoryName.lower(), imageFileName)

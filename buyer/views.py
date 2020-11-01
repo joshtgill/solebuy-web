@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from solebuy.forms import CategoryForm
-from .forms import FilterForm, ProductForm
+from .forms import FilterForm
 from .models import *
 from buyer.src.assistant import Assistant
 
@@ -33,17 +33,11 @@ def category(request):
         return render(request, 'category.html', content)
 
     # Respond to the request
-    popupProduct = None
     if request.method == 'POST':
         # Filter form submited. Update ID map with selection
         filterForm = FilterForm(request.POST)
         if filterForm.is_valid():
             updateIdMap(request, filterForm.cleaned_data.get('button'))
-
-        # Product form submitted. Get product data for popup
-        productForm = ProductForm(request.POST)
-        if productForm.is_valid():
-            popupProduct = Product.objects.get(id=productForm.cleaned_data['idd'])
     else:
         popupProduct = None
         resetIdMap(request, len(Assister.objects.filter(category=category)))
@@ -55,8 +49,7 @@ def category(request):
 
     # Build content for template
     content = {'categoryForm': categoryForm, 'categoryData': serializeCategory(category, filteredProducts),
-               'AFIdMap': request.session['AFIdMap'], 'filteredProducts': filteredProducts,
-               'popupProduct': serializeProduct(popupProduct, False) if popupProduct else None}
+               'AFIdMap': request.session['AFIdMap'], 'filteredProducts': filteredProducts}
 
     return render(request, 'category.html', content)
 
@@ -101,9 +94,9 @@ def serializeProduct(product, serializeProcons=True):
 
     if serializeProcons:
         for pro in Pro.objects.filter(product=product):
-            productData.get('pros').append(pro)
+            productData.get('pros').append(pro.contents)
 
         for con in Con.objects.filter(product=product):
-            productData.get('cons').append(pro)
+            productData.get('cons').append(con.contents)
 
     return productData

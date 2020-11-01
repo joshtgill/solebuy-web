@@ -32,11 +32,11 @@
 			</form>
 			<div class="results">
 				<div class="products">
-					<form id="productForm" action="" method="POST">
-						<input id="productInput" type="hidden" name="idd"/>
-						{% csrf_token %}
-						{% for product in categoryData.filteredProducts %}
-							<div class="product" onclick="submitProductForm('{{ product.id }}')">
+					{% for product in categoryData.filteredProducts %}
+						{% with product.id|stringformat:"i" as productId %}
+							{{ product|json_script:productId }}
+							<div class="product" onclick="displayProductPopup({{ productId }})">
+						{% endwith %}
 								{% with categoryData.name|buildProductImagePath:product.imageFileName as productImagePath %}
 									<img src="{% static productImagePath %}" alt="{{ product.name }}">
 								{% endwith %}
@@ -47,27 +47,24 @@
 									{% for pro in product.pros %}
 										<div class="procon">
 											<img src="{% static 'images/plus.png' %}" alt="Plus">
-											<h1>{{ pro.contents }}</h1>
+											<h1>{{ pro }}</h1>
 										</div>
 									{% endfor %}
 									<div class="spacer"></div>
 									{% for con in product.cons %}
 										<div class="procon">
 											<img src="{% static 'images/minus.png' %}" alt="Plus">
-											<h1>{{ con.contents }}</h1>
+											<h1>{{ con }}</h1>
 										</div>
 									{% endfor %}
 								</div>
 							</div>
-						{% endfor %}
-					</form>
+					{% endfor %}
 				</div>
 			</div>
 		</div>
 
-		{% if popupProduct %}
-			{% include "product_popup.html" %}
-		{% endif %}
+		{% include "product_popup.html" %}
 
 	</body>
 
