@@ -92,7 +92,7 @@ else:
     # Cloud SQL via the proxy. To start the proxy via command line:
     #
     #     $ cloud_sql_proxy -instances=[INSTANCE_CONNECTION_NAME]=tcp:3306
-    #     $ ./cloud_sql_proxy -instances="solebuy-294315:us-central1:buyer-instance"=tcp:3306
+    #     $ ./local/cloud_sql_proxy -instances="solebuy-294315:us-central1:buyer-instance"=tcp:3306
     #
     # See https://cloud.google.com/sql/docs/mysql-connect-proxy
     DATABASES = {
