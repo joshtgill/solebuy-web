@@ -5,4 +5,4 @@ __pycache__
 local/
 
 # Deployment files/folders
-static/
+/static/
