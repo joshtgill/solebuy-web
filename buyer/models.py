@@ -3,7 +3,7 @@ from django.db import models
 
 LENGTH_SHORT = 30
 LENGTH_MEDIUM = 50
-LENGTH_XLONG = 300
+LENGTH_XLONG = 500
 
 
 class Category(models.Model):
