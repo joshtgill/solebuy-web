@@ -5,7 +5,7 @@ function displayProductPopup(productId) {
     product = JSON.parse(document.getElementById(productId).textContent);
 
     document.getElementById('name').innerText = product['name'];
-    document.getElementById('price').innerText = `$${product['price']}`;
+    document.getElementById('price').innerText = `$${product['price'].toFixed(2)}`;
     document.getElementById('image').src = `/static/images/smartphone/products/${product['imageFileName']}`;
     document.getElementById('prosSummary').innerText = product['prosSummary'];
     document.getElementById('consSummary').innerText = product['consSummary'];

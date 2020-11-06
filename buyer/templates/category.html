@@ -42,7 +42,7 @@
 								{% endwith %}
 								<div class="details">
 									<h1>{{ product.name }}</h1>
-									<h2><b>${{ product.price }}</b></h2>
+									<h2><b>${{ product.price|floatformat:2 }}</b></h2>
 									<hr>
 									{% for pro in product.pros %}
 										<div class="procon">
