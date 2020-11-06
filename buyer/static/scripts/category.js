@@ -8,7 +8,7 @@ function displayProductPopup(productId) {
     document.getElementById('price').innerText = `$${product['price']}`;
     document.getElementById('image').src = `/static/images/smartphone/products/${product['imageFileName']}`;
     document.getElementById('prosSummary').innerText = product['prosSummary'];
-    document.getElementById('consSummary').innerText = `$${product['consSummary']}`;
+    document.getElementById('consSummary').innerText = product['consSummary'];
 
     productPopup.style.display = "block";
 }
