@@ -37,9 +37,11 @@
 							{{ product|json_script:productId }}
 							<div class="product" onclick="displayProductPopup({{ productId }})">
 						{% endwith %}
-								{% with categoryData.name|buildProductImagePath:product.imageFileName as productImagePath %}
-									<img src="{% static productImagePath %}" alt="{{ product.name }}">
-								{% endwith %}
+								<div class="image-container">
+									{% with categoryData.name|buildProductImagePath:product.imageFileName as productImagePath %}
+										<img src="{% static productImagePath %}" alt="{{ product.name }}">
+									{% endwith %}
+								</div>
 								<div class="details">
 									<h1>{{ product.name }}</h1>
 									<h2><b>${{ product.price|floatformat:2 }}</b></h2>

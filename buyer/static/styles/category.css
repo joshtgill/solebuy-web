@@ -75,6 +75,7 @@
 .product {
     display: inline-block;
     width: 470px;
+    height: 240px;
 
     margin-left: 20px;
     margin-right: 20px;
@@ -84,22 +85,27 @@
     border-radius: 10px;
 }
 
-.product img {
+.product .image-container {
     position: relative;
     float: left;
-    width: 225px;
-    height: 225px;
+    width: 50%;
+    height: 100%;
 
     border-radius: 10px;
-    padding-top: 15px;
-    padding-bottom: 15px;
+}
+
+.product .image-container img {
+    position: relative;
+    top: 50%;
+    transform: translate(0%, -50%);
+    width: 210px;
 }
 
 .product .details {
     position: relative;
     float: left;
-    width: 225px;
-    height: 255px;
+    width: calc(50% - 20px);
+    height: 100%;
 
     padding-right: 20px;
     border-radius: 0px 10px 10px 0px;
@@ -132,13 +138,15 @@
     width: 12px;
     height: 12px;
     padding: 0px;
+    top: 0%;
+    transform: translate(0%, 0%);
 }
 
 .product .details .procon h1 {
     position: relative;
     margin: 0px;
     margin-left: 10px;
-    font-size: 18px;
+    font-size: 16px;
     text-align: left;
 }
 
