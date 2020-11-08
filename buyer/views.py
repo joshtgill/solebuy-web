@@ -39,17 +39,16 @@ def category(request):
         if filterForm.is_valid():
             updateIdMap(request, filterForm.cleaned_data.get('button'))
     else:
-        popupProduct = None
         resetIdMap(request, len(Assister.objects.filter(category=category)))
 
     # Find recommended products based on AF selections
     filteredProducts = Assistant().filterProducts(Product.objects.filter(category=category),
-                                                  request.session['AFIdMap']).get('primary')
+                                                  request.session['userAFIds']).get('primary')
     filteredProducts = sorted(filteredProducts, key=lambda product: product.price)
 
     # Build content for template
     content = {'categoryForm': categoryForm, 'categoryData': serializeCategory(category, filteredProducts),
-               'AFIdMap': request.session['AFIdMap'], 'filteredProducts': filteredProducts}
+               'userAFIds': request.session['userAFIds'], 'filteredProducts': filteredProducts}
 
     return render(request, 'category.html', content)
 
@@ -57,17 +56,17 @@ def category(request):
 def updateIdMap(request, selectValue):
     assisterId = int(selectValue[ : selectValue.find('.')])
     filterId = int(selectValue[selectValue.find('.') + 1 : ])
-    AFIdMap = request.session['AFIdMap']
-    if filterId not in AFIdMap[assisterId]:
-        AFIdMap[assisterId].append(filterId)
+    userAFIds = request.session['userAFIds']
+    if filterId not in userAFIds[assisterId]:
+        userAFIds[assisterId].append(filterId)
     else:
-        AFIdMap[assisterId].remove(filterId)
+        userAFIds[assisterId].remove(filterId)
 
-    request.session['AFIdMap'] = AFIdMap
+    request.session['userAFIds'] = userAFIds
 
 
 def resetIdMap(request, numAssisters):
-    request.session['AFIdMap'] = [[] for i in range(numAssisters)]
+    request.session['userAFIds'] = [[] for i in range(numAssisters)]
 
 
 def serializeCategory(category, filteredProducts):

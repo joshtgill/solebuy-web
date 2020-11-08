@@ -5,11 +5,11 @@ register = template.Library()
 
 
 @register.filter(name='buildButtonStyle')
-def buildButtonStyle(buttonValue, AFIdMap):
+def buildButtonStyle(buttonValue, userAFIds):
     assisterId = int(buttonValue.split('.')[0])
     filterId = int(buttonValue.split('.')[1])
 
-    if filterId in AFIdMap[assisterId]:
+    if filterId in userAFIds[assisterId]:
         return 'border: 3px solid rgb(13, 147, 255);'
     else:
         return 'border: 1px solid rgb(170, 170, 170);'
