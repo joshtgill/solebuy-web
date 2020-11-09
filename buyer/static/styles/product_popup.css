@@ -13,11 +13,11 @@
 
 .product-popup .content {
     position: relative;
-    width: 800px;
-    height: 500px;
     top: 100px;
     left: 50%;
     transform: translate(-50%, 0%);
+    width: 800px;
+    height: 520px;
 
     padding: 20px 20px 20px 20px;
     text-align: center;
@@ -71,6 +71,7 @@
 
 .product-popup .content .info {
     position: relative;
+    display: flex;
 }
 
 .product-popup .content .info img {
@@ -82,14 +83,11 @@
 
 .product-popup .content .info .summaries {
     float: left;
-    position: relative;
     width: 400px;
     height: 350px;
 }
 
-.product-popup .content .info .summaries .proconSummary {
-    position: relative;
-    top: 0px;
+.product-popup .content .info .summaries fieldset {
     width: 400px;
 
     padding: 10px;
@@ -98,13 +96,50 @@
     text-align: left;
 }
 
-.product-popup .content .info .summaries .proconSummary j {
-    font-size: 18px;
+.product-popup .content .info .summaries fieldset legend {
+    font-size: 17px;
     font-weight: bold;
 }
 
-.product-popup .content .info .summaries .proconSummary p {
-    font-size: 15px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+.product-popup .content .info .summaries fieldset p {
+    margin: 0px;
+    font-size: 16px;
+}
+
+.product-popup .content .alternatives {
+    display: flex;
+
+    align-items: center;
+    justify-content: left;
+    margin-top: 20px;
+}
+
+.product-popup .content .alternatives h1 {
+    margin: 0px 5px 0px 10px;
+    font-weight: normal;
+    font-size: 18px;
+    color: rgb(15, 15, 15);
+}
+
+.product-popup .content .alternatives fieldset {
+    border: 1px solid rgb(150, 150, 150);
+    border-radius: 5px;
+}
+
+.product-popup .content .alternatives .alternative-products .alternative-product {
+    float: left;
+
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 5px;
+    background-color: rgb(235, 235, 235);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.product-popup .content .alternatives .alternative-products .alternative-product h1 {
+    padding: 5px;
+    margin: 0px;
+    font-size: 16px;
+    color: rgb(25, 25, 25);
 }

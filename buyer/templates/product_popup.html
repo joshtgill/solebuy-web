@@ -5,7 +5,9 @@
 
 <div id="productPopup" class="product-popup">
     <div class="content">
-        <div class="close">&times;</div>
+        <div class="close">
+            &times;
+        </div>
         <div class="header">
             <j1 id="name"></j1>
             <hr>
@@ -14,15 +16,28 @@
         <div class="info">
             <img id="image">
             <div class="summaries">
-                <div class="proconSummary" style="margin-bottom: 20px; border: 1.5px solid rgb(24, 173, 24)">
-                    <j>Who should buy</j>
+                <fieldset style="border: 1.5px solid rgb(24, 173, 24); margin-bottom: 10px">
+                    <legend>Who should buy</legend>
                     <p id="prosSummary"></p>
-                </div>
-                <div class="proconSummary" style="margin-top: 20px; border: 1.5px solid rgb(173, 24, 24);">
-                    <j>Who should pass</j>
+                </fieldset>
+                <fieldset style="border: 1.5px solid rgb(173, 24, 24);">
+                    <legend>Who should pass</legend>
                     <p id="consSummary"></p>
-                </div>
+                </fieldset>
             </div>
-        <div>
+        </div>
+        <div class="alternatives">
+            <h1>See also:</h1>
+            <a href="{% url 'category' %}?name=Smartphone">
+                <div class="alternative-products">
+                    <div class="alternative-product">
+                        <h1>Placeholder 1</h1>
+                    </div>
+                    <div class="alternative-product">
+                        <h1>Placeholder 2</h1>
+                    </div>
+                </div>
+            </a>
+        </div>
     </div>
 </div>
