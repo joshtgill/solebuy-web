@@ -44,7 +44,7 @@ def category(request):
         # Update AF IDs with selection from form
         filterForm = FilterForm(request.POST)
         if filterForm.is_valid():
-            userAFIds = updateIdMap(request, filterForm.cleaned_data.get('button'))
+            userAFIds = updateIdMap(request, filterForm.cleaned_data.get('button'), assistersData)
             content.update({'userAFIds': userAFIds})
 
         # Find recommended products based on AF IDs selected
@@ -55,11 +55,15 @@ def category(request):
     return render(request, 'category.html', content)
 
 
-def updateIdMap(request, selectValue):
+def updateIdMap(request, selectValue, assistersData):
     assisterId = int(selectValue[ : selectValue.find('.')])
     filterId = int(selectValue[selectValue.find('.') + 1 : ])
     userAFIds = request.session['userAFIds']
     if filterId not in userAFIds[assisterId]:
+        # If Assister is decisive, only allow a single filter to be selected at a time
+        if assistersData[assisterId].get('object').decisive:
+            userAFIds[assisterId].clear()
+
         userAFIds[assisterId].append(filterId)
     else:
         userAFIds[assisterId].remove(filterId)
