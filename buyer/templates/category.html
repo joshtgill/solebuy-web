@@ -2,7 +2,7 @@
 	{% load static %}
 	{% load helper %}
 	<head>
-		<title>SoleBuy - {{ categoryForm.name.value }}</title>
+		<title>SoleBuy - {{ category.name }}</title>
 
 		<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="{% static 'styles/common.css' %}">
@@ -15,9 +15,9 @@
 			<form action="" method="POST">
 				{% csrf_token %}
 				<div class="filters">
-					{% for assister in categoryData.assisters %}
+					{% for assister in assistersData %}
 						<div class="filter">
-							<h3>{{ assister.prompt }}</h3>
+							<h3>{{ assister.object.prompt }}</h3>
 							<hr>
 							{% with forloop.counter0|stringformat:"i" as assisterId %}
 								{% for filter in assister.filters %}
@@ -32,35 +32,33 @@
 			</form>
 			<div class="results">
 				<div class="products">
-					{% for product in categoryData.filteredProducts %}
-						{% with product.id|stringformat:"i" as productId %}
-							{{ product|json_script:productId }}
-							<div class="product" onclick="displayProductPopup({{ productId }})">
-						{% endwith %}
-								<div class="image-container">
-									{% with categoryData.name|buildProductImagePath:product.imageFileName as productImagePath %}
-										<img src="{% static productImagePath %}" alt="{{ product.name }}">
-									{% endwith %}
-								</div>
-								<div class="details">
-									<h1>{{ product.name }}</h1>
-									<h2><b>${{ product.price|floatformat:2 }}</b></h2>
-									<hr>
-									{% for pro in product.pros %}
-										<div class="procon">
-											<img src="{% static 'images/plus.png' %}" alt="Plus">
-											<h1>{{ pro }}</h1>
-										</div>
-									{% endfor %}
-									<div class="spacer"></div>
-									{% for con in product.cons %}
-										<div class="procon">
-											<img src="{% static 'images/minus.png' %}" alt="Plus">
-											<h1>{{ con }}</h1>
-										</div>
-									{% endfor %}
-								</div>
+					{% for product in filteredProducts %}
+						{{ product.data|json_script:product.data.id }}
+						<div class="product" onclick="displayProductPopup({{ product.data.id }})">
+							<div class="image-container">
+								{% with category.name|buildProductImagePath:product.data.imageFileName as productImagePath %}
+									<img src="{% static productImagePath %}" alt="{{ product.data.name }}">
+								{% endwith %}
 							</div>
+							<div class="details">
+								<h1>{{ product.data.name }}</h1>
+								<h2><b>${{ product.data.price|floatformat:2 }}</b></h2>
+								<hr>
+								{% for pro in product.pros %}
+									<div class="procon">
+										<img src="{% static 'images/plus.png' %}" alt="Plus">
+										<h1>{{ pro.contents }}</h1>
+									</div>
+								{% endfor %}
+								<div class="spacer"></div>
+								{% for con in product.cons %}
+									<div class="procon">
+										<img src="{% static 'images/minus.png' %}" alt="Plus">
+										<h1>{{ con.contents }}</h1>
+									</div>
+								{% endfor %}
+							</div>
+						</div>
 					{% endfor %}
 				</div>
 			</div>

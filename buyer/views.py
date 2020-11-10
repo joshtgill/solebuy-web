@@ -3,6 +3,7 @@ from solebuy.forms import CategoryForm
 from .forms import FilterForm
 from .models import *
 from buyer.src.assistant import Assistant
+from datetime import datetime
 
 
 def home(request):
@@ -16,39 +17,40 @@ def home(request):
 
 
 def category(request):
-    # Get the incoming category name
-    categoryName = ''
+    content = {}
+
+    # Get category from, attempt to get a category object from search
+    category = None
     categoryForm = CategoryForm(request.GET)
     if categoryForm.is_valid():
-        categoryName = categoryForm.cleaned_data['name']
+        try:
+            category = Category.objects.get(name=categoryForm.cleaned_data['name'])
+        except:
+            return render(request, 'category.html', {'categoryForm': categoryForm})
     else:
         return render(request, 'category.html')
+    content.update({'categoryForm': categoryForm, 'category': category})
 
-    # Attempt to get category object from name
-    category = None
-    try:
-        category = Category.objects.get(name=categoryName)
-    except:
-        content = {'categoryForm': categoryForm, 'filtersWidth': str(50), 'filterWidth': '100%'}
-        return render(request, 'category.html', content)
+    # Get the category's products and serialized assisters
+    products = Product.objects.filter(category=category)
+    assistersData = serializeAssisters(category)
+    content.update({'assistersData': assistersData})
 
-    # Respond to the request
-    if request.method == 'POST':
-        # Filter form submited. Update ID map with selection
+    # Respond based on request
+    if request.method == 'GET':
+        content.update({'userAFIds': resetIdMap(request, len(assistersData)),
+                        'filteredProducts': serializeProducts(products)})
+    else:
+        # Update AF IDs with selection from form
         filterForm = FilterForm(request.POST)
         if filterForm.is_valid():
-            updateIdMap(request, filterForm.cleaned_data.get('button'))
-    else:
-        resetIdMap(request, len(Assister.objects.filter(category=category)))
+            userAFIds = updateIdMap(request, filterForm.cleaned_data.get('button'))
+            content.update({'userAFIds': userAFIds})
 
-    # Find recommended products based on AF selections
-    filteredProducts = Assistant().filterProducts(Product.objects.filter(category=category),
-                                                  request.session['userAFIds']).get('primary')
-    filteredProducts = sorted(filteredProducts, key=lambda product: product.price)
-
-    # Build content for template
-    content = {'categoryForm': categoryForm, 'categoryData': serializeCategory(category, filteredProducts),
-               'userAFIds': request.session['userAFIds'], 'filteredProducts': filteredProducts}
+        # Find recommended products based on AF IDs selected
+        filteredProducts = Assistant().filterProducts(products, userAFIds).get('primary')
+        content.update({'filteredProducts': serializeProducts(sorted(filteredProducts,
+                                                                     key=lambda product: product.price))})
 
     return render(request, 'category.html', content)
 
@@ -64,38 +66,33 @@ def updateIdMap(request, selectValue):
 
     request.session['userAFIds'] = userAFIds
 
+    return userAFIds
+
 
 def resetIdMap(request, numAssisters):
-    request.session['userAFIds'] = [[] for i in range(numAssisters)]
+    userAFIds = [[] for i in range(numAssisters)]
+    request.session['userAFIds'] = userAFIds
+
+    return userAFIds
 
 
-def serializeCategory(category, filteredProducts):
-    # Category data
-    categoryData = {'name': category.name, 'assisters': [], 'filteredProducts': []}
-
-    # Assister data
+def serializeAssisters(category):
+    assistersData = []
     for assister in Assister.objects.filter(category=category):
-        assisterData = {'name': assister.name, 'prompt': assister.prompt,
+        assisterData = {'object': assister,
                         'filters': [filterr.contents for filterr in Filter.objects.filter(assister=assister)]}
-        categoryData.get('assisters').append(assisterData)
+        assistersData.append(assisterData)
 
-    # Product data
-    for product in filteredProducts:
-        categoryData.get('filteredProducts').append(serializeProduct(product))
-
-    return categoryData
+    return assistersData
 
 
-def serializeProduct(product, serializeProcons=True):
-    productData = {'id': product.id, 'name': product.name, 'price': product.price,
-                   'imageFileName': product.imageFileName, 'prosSummary': product.prosSummary,
-                   'consSummary': product.consSummary, 'pros': [], 'cons': []}
+def serializeProducts(products):
+    productsData = []
+    # Pro and Con objects are not manually serialized for efficiency
+    for product in products:
+        productsData.append({'data': {'id': product.id, 'name': product.name, 'price': product.price,
+                                      'imageFileName': product.imageFileName, 'prosSummary': product.prosSummary,
+                                      'consSummary': product.consSummary},
+                             'pros': Pro.objects.filter(product=product), 'cons': Con.objects.filter(product=product)})
 
-    if serializeProcons:
-        for pro in Pro.objects.filter(product=product):
-            productData.get('pros').append(pro.contents)
-
-        for con in Con.objects.filter(product=product):
-            productData.get('cons').append(con.contents)
-
-    return productData
+    return productsData
