@@ -96,7 +96,8 @@ def serializeProducts(products):
     for product in products:
         productsData.append({'data': {'id': product.id, 'name': product.name, 'price': product.price,
                                       'imageFileName': product.imageFileName, 'prosSummary': product.prosSummary,
-                                      'consSummary': product.consSummary},
+                                      'consSummary': product.consSummary,
+                                      'alternativeProducts': [alternativeProduct.name for alternativeProduct in product.alternativeProducts.all()]},
                              'pros': Pro.objects.filter(product=product), 'cons': Con.objects.filter(product=product)})
 
     return productsData

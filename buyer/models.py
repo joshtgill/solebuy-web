@@ -36,6 +36,7 @@ class Product(models.Model):
     prosSummary = models.CharField(max_length=LENGTH_XLONG)
     consSummary = models.CharField(max_length=LENGTH_XLONG)
     assisterFilterIds = models.ManyToManyField(AssisterFilterId)
+    alternativeProducts = models.ManyToManyField('self')
 
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
