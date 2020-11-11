@@ -19,7 +19,7 @@
     width: 800px;
     height: 520px;
 
-    padding: 20px 20px 20px 20px;
+    padding: 30px 20px 20px 20px;
     text-align: center;
     background-color: rgb(255, 255, 255);
     border: 1px solid rgb(221, 221, 221);
@@ -38,53 +38,33 @@
     cursor: pointer;
 }
 
-.product-popup .content .header {
-    position: relative;
-    display: block;
-    left: 50%;
-    transform: translate(-50%, 0%);
-
-    margin-bottom: 20px;
-}
-
-.product-popup .content .header j1 {
-    display: block;
-
-    font-size: 30px;
-    color: rgb(32, 32, 32);
-}
-
-.product-popup .content .header hr {
-    width: 100px;
-
-    margin-top: 2px;
-    margin-bottom: 3px;
-}
-
-.product-popup .content .header j2 {
-    display: block;
-
-    font-size: 20px;
-    color: rgb(32, 32, 32);
-    font-weight: bold;
-}
-
 .product-popup .content .info {
     position: relative;
     display: flex;
 }
 
-.product-popup .content .info img {
+.product-popup .content .info .imagename {
     float: left;
     left: 0px;
+    width: 350px;
+    height: 400px;
+}
+
+.product-popup .content .info img {
     width: 350px;
     height: 350px;
 }
 
+.product-popup .content .info .imagename h1 {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-size: 25px;
+    font-weight: normal;
+    color: rgb(32, 32, 32);
+}
+
 .product-popup .content .info .summaries {
     float: left;
-    width: 400px;
-    height: 350px;
 }
 
 .product-popup .content .info .summaries fieldset {
@@ -93,53 +73,60 @@
     padding: 10px;
     border-radius: 5px;
     background-color: rgb(245, 245, 245);
-    text-align: left;
+    border: 1px solid rgb(170, 170, 170);
 }
 
 .product-popup .content .info .summaries fieldset legend {
-    font-size: 17px;
+    font-size: 18px;
     font-weight: bold;
 }
 
 .product-popup .content .info .summaries fieldset p {
     margin: 0px;
     font-size: 16px;
+    text-align: left;
 }
 
-.product-popup .content .alternatives {
-    display: flex;
-
-    align-items: center;
-    justify-content: left;
-    margin-top: 20px;
+.product-popup .content .details {
+    margin-top: 10px;
 }
 
-.product-popup .content .alternatives h1 {
-    margin: 0px 5px 0px 10px;
-    font-weight: normal;
-    font-size: 18px;
-    color: rgb(15, 15, 15);
+.product-popup .content .details .detail {
+    display: inline-block;
+
+    margin: 7px 20px 7px 20px;
+    border: 1px solid rgb(170, 170, 170);
+    border-radius: 10px;
 }
 
-.product-popup .content .alternatives fieldset {
-    border: 1px solid rgb(150, 150, 150);
-    border-radius: 5px;
-}
-
-.product-popup .content .alternatives .alternative-products .alternative-product {
+.product-popup .content .details .detail .label {
     float: left;
 
-    margin-left: 10px;
-    margin-right: 10px;
     padding: 5px;
-    background-color: rgb(235, 235, 235);
-    border-radius: 8px;
     text-align: center;
 }
 
-.product-popup .content .alternatives .alternative-products .alternative-product h1 {
+.product-popup .content .details .detail .label h1 {
     padding: 5px;
     margin: 0px;
     font-size: 16px;
     color: rgb(25, 25, 25);
+    font-weight: normal;
+}
+
+.product-popup .content .details .detail .value {
+    float: left;
+
+    padding: 5px;
+    background-color: rgb(235, 235, 235);
+    border-radius: 0px 10px 10px 0px;
+    text-align: center;
+}
+
+.product-popup .content .details .detail .value h1 {
+    padding: 5px;
+    margin: 0px;
+    font-size: 16px;
+    color: rgb(25, 25, 25);
+    font-weight: normal;
 }
