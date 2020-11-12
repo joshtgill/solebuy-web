@@ -36,7 +36,12 @@ class Product(models.Model):
     prosSummary = models.CharField(max_length=LENGTH_XLONG)
     consSummary = models.CharField(max_length=LENGTH_XLONG)
     assisterFilterIds = models.ManyToManyField(AssisterFilterId)
-    alternativeProducts = models.ManyToManyField('self')
+    entryCapacity = models.IntegerField(default=0)
+    cameraDescription = models.CharField(max_length=LENGTH_MEDIUM, default='')
+    batteryDescription = models.CharField(max_length=LENGTH_SHORT, default='')
+    displayDescription = models.CharField(max_length=LENGTH_MEDIUM, default='')
+    internalsDescription = models.CharField(max_length=LENGTH_SHORT, default='')
+    alternativeProductNames = models.CharField(max_length=LENGTH_MEDIUM, default='')
 
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
