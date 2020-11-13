@@ -15,9 +15,9 @@ function displayProductPopup(productId) {
     document.getElementById('consSummary').innerText = product['consSummary'];
     addDetail(detailsDiv, 'Starting price', `$${product['price'].toFixed(2)}`);
     addDetail(detailsDiv, 'Starting capacity', `${product['entryCapacity']} GB`);
+    addDetail(detailsDiv, 'Display', `${product['displayDescription']}`);
     addDetail(detailsDiv, 'Camera', `${product['cameraDescription']}`);
     addDetail(detailsDiv, 'Battery life', `${product['batteryDescription']}`);
-    addDetail(detailsDiv, 'Display', `${product['displayDescription']}`);
     addDetail(detailsDiv, 'Internals', `${product['internalsDescription']}`);
     addDetail(detailsDiv, 'Similar products', `${product['alternativeProductNames']}`);
 
