@@ -39,7 +39,8 @@ def category(request):
     # Respond based on request
     if request.method == 'GET':
         content.update({'userAFIds': resetIdMap(request, len(assistersData)),
-                        'filteredProducts': serializeProducts(products)})
+                        'filteredProducts': serializeProducts(sorted(products,
+                                                                     key=lambda product: product.price))})
     else:
         # Update AF IDs with selection from form
         filterForm = FilterForm(request.POST)
