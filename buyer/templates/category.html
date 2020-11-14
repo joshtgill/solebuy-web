@@ -14,9 +14,9 @@
 		<div class="content">
 			<form action="" method="POST">
 				{% csrf_token %}
-				<div class="filters">
+				<div class="assisters">
 					{% for assister in assistersData %}
-						<div class="filter">
+						<div class="assister">
 							<h1>{{ assister.object.prompt }}</h1>
 							<hr>
 							<h2>
