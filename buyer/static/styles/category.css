@@ -61,10 +61,32 @@
     text-align: center;
 }
 
+.content .results .header {
+    padding: 10px 0px 10px 80px;
+    text-align: left;
+}
+
+.content .results .header label {
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.content .results .header select {
+    font-size: 17px;
+    padding: 5px 10px 5px 10px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    outline: none;
+}
+
+.content .results .header option {
+    font-size: 17px;
+}
+
 .products {
     position: relative;
 
-    margin-top: 35px;
+    margin: 0px 60px 0px 60px;
 }
 
 .products a {

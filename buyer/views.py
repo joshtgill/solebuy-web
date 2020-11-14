@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from solebuy.forms import CategoryForm
-from .forms import FilterForm
+from .forms import FilterForm, SortForm
 from .models import *
 from buyer.src.assistant import Assistant
 from datetime import datetime
@@ -19,7 +19,7 @@ def home(request):
 def category(request):
     content = {}
 
-    # Get category from, attempt to get a category object from search
+    # Get category form then attempt to get a category object from search
     category = None
     categoryForm = CategoryForm(request.GET)
     if categoryForm.is_valid():
@@ -32,31 +32,40 @@ def category(request):
     content.update({'categoryForm': categoryForm, 'category': category})
 
     # Get the category's products and serialized assisters
-    products = Product.objects.filter(category=category)
+    products = sorted(Product.objects.filter(category=category), key=lambda product: product.ranking)
     assistersData = serializeAssisters(category)
     content.update({'assistersData': assistersData})
 
-    # Respond based on request
+    # Respond to the request
     if request.method == 'GET':
-        content.update({'userAFIds': resetIdMap(request, len(assistersData)),
-                        'filteredProducts': serializeProducts(sorted(products,
-                                                                     key=lambda product: product.price))})
+        resetAFIdMap(request, len(assistersData))
+        resetSortValue(request)
     else:
-        # Update AF IDs with selection from form
-        filterForm = FilterForm(request.POST)
-        if filterForm.is_valid():
-            userAFIds = updateIdMap(request, filterForm.cleaned_data.get('button'), assistersData)
-            content.update({'userAFIds': userAFIds})
+        if 'filterField' in request.POST:
+            filterForm = FilterForm(request.POST)
+            if filterForm.is_valid():
+                updateAFIdMap(request, filterForm.cleaned_data.get('filterField'), assistersData)
+        elif 'sortField' in request.POST:
+            sortForm = SortForm(request.POST)
+            if sortForm.is_valid():
+                updateSortValue(request, sortForm.cleaned_data.get('sortField'))
 
-        # Find recommended products based on AF IDs selected
-        filteredProducts = Assistant().filterProducts(products, userAFIds).get('primary')
-        content.update({'filteredProducts': serializeProducts(sorted(filteredProducts,
-                                                                     key=lambda product: product.price))})
+        # Sort products accordingly
+        if request.session['sortValue'] == 'PRICE_LOW':
+            products = sorted(products, key=lambda product: product.price)
+        elif request.session['sortValue'] == 'PRICE_HIGH':
+            products = sorted(products, key=lambda product: product.price, reverse=True)
+
+        products = Assistant().filterProducts(products, request.session['userAFIds']).get('primary')
+
+    # Use existing AF IDs and products
+    content.update({'products': serializeProducts(products), 'userAFIds': request.session['userAFIds'],
+                    'sortForm': SortForm({'sortField': request.session['sortValue']})})
 
     return render(request, 'category.html', content)
 
 
-def updateIdMap(request, selectValue, assistersData):
+def updateAFIdMap(request, selectValue, assistersData):
     assisterId = int(selectValue[ : selectValue.find('.')])
     filterId = int(selectValue[selectValue.find('.') + 1 : ])
     userAFIds = request.session['userAFIds']
@@ -71,14 +80,17 @@ def updateIdMap(request, selectValue, assistersData):
 
     request.session['userAFIds'] = userAFIds
 
-    return userAFIds
+
+def resetAFIdMap(request, numAssisters):
+    request.session['userAFIds'] = [[] for i in range(numAssisters)]
 
 
-def resetIdMap(request, numAssisters):
-    userAFIds = [[] for i in range(numAssisters)]
-    request.session['userAFIds'] = userAFIds
+def updateSortValue(request, sortValue):
+    request.session['sortValue'] = sortValue
 
-    return userAFIds
+
+def resetSortValue(request):
+    request.session['sortValue'] = 'RANKING'
 
 
 def serializeAssisters(category):
