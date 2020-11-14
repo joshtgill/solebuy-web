@@ -20,16 +20,25 @@
     margin-top: 20px;
 }
 
-.filter h3 {
+.filter h1 {
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: 3px;
     color: rgb(51, 51, 51);
+    font-size: 20px;
 }
 
 .filter hr {
     width: 50%;
 
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.filter h2 {
+    margin-top: 3px;
     margin-bottom: 10px;
+    font-size: 13px;
+    color: rgb(51, 51, 51);
 }
 
 .filter button {

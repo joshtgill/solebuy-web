@@ -17,8 +17,13 @@
 				<div class="filters">
 					{% for assister in assistersData %}
 						<div class="filter">
-							<h3>{{ assister.object.prompt }}</h3>
+							<h1>{{ assister.object.prompt }}</h1>
 							<hr>
+							<h2>
+								{% if assister.object.decisive %} * chose one
+								{% else %} * chose many
+								{% endif %}
+							</h2>
 							{% with forloop.counter0|stringformat:"i" as assisterId %}
 								{% for filter in assister.filters %}
 									{% with assisterId|determineButtonValue:forloop.counter0 as buttonValue %}
