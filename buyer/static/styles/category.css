@@ -5,7 +5,7 @@
 .content .assisters {
     position: relative;
 
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     text-align: center;
     background-color: rgb(242, 242, 242);
     border-bottom: 1px solid rgb(221, 221, 221);
@@ -85,7 +85,7 @@
 }
 
 .content .results .header {
-    padding: 10px 0px 10px 80px;
+    padding: 10px 0px 5px 80px;
     text-align: left;
 }
 
