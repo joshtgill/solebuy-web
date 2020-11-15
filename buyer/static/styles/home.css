@@ -1,25 +1,9 @@
-.content .header {
-    display: flex;
-    position: relative;
-
-    margin-top: 9%;
-    margin-bottom: 2%;
-    text-align: center;
-    justify-content: center;
-    font-size: 100px;
-}
-
-.content .header h4 {
-    margin: 0;
-    color: rgb(34, 34, 34);
-}
-
 .content .category-bar {
     display: inline-block;
     width: 100%;
 
     text-align: center;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(242, 242, 242);
     border-bottom: 1px solid rgb(221, 221, 221);
 }
 
@@ -45,7 +29,61 @@
     color: rgb(34, 34, 34);
 }
 
-.content .search {
+.content .header {
+    position: relative;
+    display: flex;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 60%;
+    max-width: 1000px;
+
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgb(235, 235, 235);
+    border-left: none;
+}
+
+.content .header .slogan {
+    position: relative;
+    min-width: 350px;
+
+    text-align: center;
+    font-size: 100px;
+}
+
+.content .header .slogan h1 {
+    padding: 30px 30px 30px 30px;
+    margin: 0px 0px 0px 0px;
+    font-size: 85px;
+    font-weight: normal;
+    color: rgb(40, 40, 40);
+}
+
+.content .header .description {
+    position: relative;
+
+    padding-left: 30px;
+    text-align: left;
+    font-size: 100px;
+}
+
+.content .header .description h1 {
+    font-size: 35px;
+    font-weight: bold;
+    margin: 0px 0px 10px 0px;
+    color: rgb(34, 34, 34);
+    color: rgb(50, 50, 50);
+}
+
+.content .header .description h2 {
+    margin: 3px 0px 3px 0px;
+    font-size: 25px;
+    font-weight: normal;
+    color: rgb(34, 34, 34);
+}
+
+/* .content .search {
     display: flex;
     position: relative;
     left: 50%;
@@ -73,4 +111,4 @@
     color: rgb(34, 34, 34);
     border: none;
     outline: none;
-}
+} */

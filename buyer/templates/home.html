@@ -11,7 +11,7 @@
 	<body>
 		{% include "topnav/topnav.html" %}
 
-		<div class="content">
+		<div class="content" style="background-color: rgb(255, 255, 255)">
 			<div class="category-bar">
 				{% for categoryName in categoryNames %}
 					<a href="{% url 'category' %}?name={{ categoryName }}">
@@ -25,14 +25,26 @@
 				{% endfor %}
 			</div>
 			<div class="header">
-				<h4>Search. Answer. Buy.</h4>
+				<div class="slogan">
+					<h1 style="background-color: rgb(100, 100, 100); color: rgb(255, 255, 255)">Search.</h1>
+					<h1 style="background-color: rgb(200, 200, 200); color: rgb(40, 40, 40)">Answer.</h1>
+					<h1 style="background-color: rgb(150, 150, 150); color: rgb(255, 255, 255)">Buy.</h1>
+				</div>
+				<div class="description">
+					<h1>Why SoleBuy?</h1>
+					<h2><b><i>No</i></b> long reviews.</h2>
+					<h2><b><i>No</i></b> abstract spec sheets.</h2>
+					<h2><b><i>No</i></b> biased marketing.</h2>
+					<h2 style="margin-top: 10px">We simply find the best product <b>for your</b> needs.</h2>
+					<h2 style="margin-top: 10px">To start, explore a category above.</h2>
+				</div>
 			</div>
-			<div class="search">
+			{% comment %} <div class="search">
 				<form action="category/" method="GET">
 					{{ categoryForm }}
 				</form>
 				<input type="image" src="{% static 'images/search.png' %}" alt="Search Submit" />
-			</div>
+			</div> {% endcomment %}
 		</div>
 	</body>
 </html>
