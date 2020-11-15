@@ -1,4 +1,4 @@
-.header {
+.content .header {
     display: flex;
     position: relative;
 
@@ -9,12 +9,12 @@
     font-size: 100px;
 }
 
-.header h4 {
+.content .header h4 {
     margin: 0;
     color: rgb(34, 34, 34);
 }
 
-.category-bar {
+.content .category-bar {
     display: inline-block;
     width: 100%;
 
@@ -23,29 +23,29 @@
     border-bottom: 1px solid rgb(221, 221, 221);
 }
 
-.category-bar .category {
+.content .category-bar .category {
     display: inline-block;
 
     margin: 10px 50px 10px 50px;
 }
 
-.category-bar .category img {
+.content .category-bar .category img {
     width: 60px;
     height: 60px;
 }
 
-.category-bar .category h1 {
+.content .category-bar .category h1 {
     margin: 5px 0px 0px 0px;
     font-size: 16px;
     color: rgb(31, 31, 31);
     font-weight: normal;
 }
 
-.category-bar .category h3:hover {
+.content .category-bar .category h3:hover {
     color: rgb(34, 34, 34);
 }
 
-.search {
+.content .search {
     display: flex;
     position: relative;
     left: 50%;
@@ -61,7 +61,7 @@
     border-radius: 5px;
 }
 
-.search input[type=text] {
+.content .search input[type=text] {
     position: absolute;
     float: left;
     width: calc(100% - 45px);
