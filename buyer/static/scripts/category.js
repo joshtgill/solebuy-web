@@ -58,5 +58,5 @@ document.getElementsByClassName('close')[0].onclick = function() {
 
 window.onclick = function(event) {
     if (event.target == productPopup)
-        hideProductPopup()
+        hideProductPopup();
 }
