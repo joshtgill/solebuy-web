@@ -12,6 +12,18 @@
 		{% include "topnav/topnav.html" %}
 
 		<div class="content">
+			<div class="category-bar">
+				{% for categoryName in categoryNames %}
+					<a href="{% url 'category' %}?name={{ categoryName }}">
+						<div class="category">
+							{% with categoryName|buildCategoryIconPath as iconPath %}
+								<img src="{% static iconPath %}" alt="{{ categoryName }}">
+							{% endwith %}
+							<h1>Smartphone</h1>
+						</div>
+					</a>
+				{% endfor %}
+			</div>
 			<div class="header">
 				<h4>Search. Answer. Buy.</h4>
 			</div>
@@ -20,21 +32,6 @@
 					{{ categoryForm }}
 				</form>
 				<input type="image" src="{% static 'images/search.png' %}" alt="Search Submit" />
-			</div>
-			<div class="or-select-one">
-				<b>or</b>&nbspselect one
-			</div>
-			<div class="categories">
-				{% for categoryName in categoryNames %}
-					<a href="{% url 'category' %}?name={{ categoryName }}">
-						<div class="category">
-							{% with categoryName|buildCategoryIconPath as iconPath %}
-								<img src="{% static iconPath %}" alt="{{ categoryName }}">
-							{% endwith %}
-							<h3>Smartphone</h3>
-						</div>
-					</a>
-				{% endfor %}
 			</div>
 		</div>
 	</body>
