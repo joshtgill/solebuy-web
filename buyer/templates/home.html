@@ -12,18 +12,7 @@
 		{% include "topnav/topnav.html" %}
 
 		<div class="content" style="background-color: rgb(255, 255, 255)">
-			<div class="category-bar">
-				{% for categoryName in categoryNames %}
-					<a href="{% url 'category' %}?name={{ categoryName }}">
-						<div class="category">
-							{% with categoryName|buildCategoryIconPath as iconPath %}
-								<img src="{% static iconPath %}" alt="{{ categoryName }}">
-							{% endwith %}
-							<h1>Smartphone</h1>
-						</div>
-					</a>
-				{% endfor %}
-			</div>
+			{% include "category_bar.html"%}
 			<div class="header">
 				<div class="slogan">
 					<h1 style="background-color: rgb(100, 100, 100); color: rgb(255, 255, 255)">Search.</h1>

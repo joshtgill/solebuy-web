@@ -1,0 +1,17 @@
+{% load static %}
+{% load helper %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'styles/category_bar.css' %}">
+
+<div class="category-bar">
+    {% for categoryName in categoryNames %}
+        <a href="{% url 'category' %}?name={{ categoryName }}">
+            <div class="category">
+                {% with categoryName|buildCategoryIconPath as iconPath %}
+                    <img src="{% static iconPath %}" alt="{{ categoryName }}">
+                {% endwith %}
+                <h1>Smartphone</h1>
+            </div>
+        </a>
+    {% endfor %}
+</div>
