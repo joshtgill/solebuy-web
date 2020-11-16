@@ -24,12 +24,14 @@ def category(request):
     categoryForm = CategoryForm(request.GET)
     if categoryForm.is_valid():
         try:
-            category = Category.objects.get(name=categoryForm.cleaned_data['name'])
+            categoryNameForm = categoryForm.cleaned_data['name'].lower().capitalize()
+            category = Category.objects.get(name=categoryNameForm)
+            content.update({'categoryForm': CategoryForm({'name': categoryNameForm})})
         except:
             return render(request, 'category.html', {'categoryForm': categoryForm})
     else:
         return render(request, 'category.html')
-    content.update({'categoryForm': categoryForm, 'category': category})
+    content.update({'category': category})
 
     # Get the category's products and serialized assisters
     products = sorted(Product.objects.filter(category=category), key=lambda product: product.ranking)
