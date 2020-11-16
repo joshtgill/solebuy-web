@@ -1,0 +1,27 @@
+<html>
+	{% load static %}
+	<head>
+		<title>SoleBuy</title>
+
+		<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="{% static 'styles/common.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'styles/category_not_found.css' %}">
+	</head>
+	<body>
+		{% include "topnav/topnav_with_search.html" %}
+
+		<div class="content" style="background-color: rgb(255, 255, 255)">
+		    {% include "category_bar.html" %}
+
+            <div class="message">
+                <h1>!</h1>
+                {% if formCategoryName %}
+                    <h2>Category '{{ formCategoryName }}' does not exist.</h2>
+                {% else %}
+                    <h2>Invalid category search.</h2>
+                {% endif %}
+                <h2>Maybe searching isn't for you, select a category above.</h2>
+            </div>
+		</div>
+	</body>
+</html>

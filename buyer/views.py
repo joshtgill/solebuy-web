@@ -8,10 +8,8 @@ from datetime import datetime
 
 def home(request):
     # Get all category names
-    categoryNames = [category.name for category in Category.objects.all()]
-
-    # Build content for template
-    content = {'categoryForm': CategoryForm(), 'categoryNames': categoryNames}
+    content = {'categoryForm': CategoryForm(),
+               'categoryNames': [category.name for category in Category.objects.all()]}
 
     return render(request, 'home.html', content)
 
@@ -19,18 +17,22 @@ def home(request):
 def category(request):
     content = {}
 
-    # Get category form then attempt to get a category object from search
+    # Attempt to get category object from form
+    formCategoryName = ''
     category = None
     categoryForm = CategoryForm(request.GET)
     if categoryForm.is_valid():
         try:
-            categoryNameForm = categoryForm.cleaned_data['name'].lower().capitalize()
-            category = Category.objects.get(name=categoryNameForm)
-            content.update({'categoryForm': CategoryForm({'name': categoryNameForm})})
+            formCategoryName = categoryForm.cleaned_data['name'].lower().capitalize()
+            category = Category.objects.get(name=formCategoryName)
+            content.update({'categoryForm': CategoryForm({'name': formCategoryName})})
         except:
-            return render(request, 'category.html', {'categoryForm': categoryForm})
-    else:
-        return render(request, 'category.html')
+            pass
+
+    if not category:
+        return render(request, 'category_not_found.html', {'categoryForm': CategoryForm(),
+                                                           'formCategoryName': formCategoryName,
+                                                           'categoryNames': [category.name for category in Category.objects.all()]})
     content.update({'category': category})
 
     # Get the category's products and serialized assisters
