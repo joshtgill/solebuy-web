@@ -1,10 +1,16 @@
-.content .header {
+.content .inner-content {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: calc(100% - 200px);
+
+    justify-content: center;
+    align-items: center;
+}
+
+.content .inner-content .flag {
     position: relative;
     display: flex;
-    top: 10%;
-    left: 50%;
-    transform: translate(-50%, 0%);
-    width: 60%;
     max-width: 1000px;
 
     align-items: center;
@@ -13,7 +19,7 @@
     border-left: none;
 }
 
-.content .header .slogan {
+.content .inner-content .flag .slogan {
     position: relative;
     min-width: 350px;
 
@@ -21,7 +27,7 @@
     font-size: 100px;
 }
 
-.content .header .slogan h1 {
+.content .inner-content .flag .slogan h1 {
     padding: 30px 30px 30px 30px;
     margin: 0px 0px 0px 0px;
     font-size: 85px;
@@ -29,15 +35,15 @@
     color: rgb(255, 255, 255);
 }
 
-.content .header .description {
+.content .inner-content .flag .description {
     position: relative;
 
-    padding-left: 30px;
+    padding: 0px 30px 0px 30px;
     text-align: left;
     font-size: 100px;
 }
 
-.content .header .description h1 {
+.content .inner-content .flag .description h1 {
     font-size: 35px;
     font-weight: bold;
     margin: 0px 0px 10px 0px;
@@ -45,14 +51,14 @@
     color: rgb(50, 50, 50);
 }
 
-.content .header .description h2 {
+.content .inner-content .flag .description h2 {
     margin: 3px 0px 3px 0px;
     font-size: 25px;
     font-weight: normal;
     color: rgb(34, 34, 34);
 }
 
-/* .content .search {
+/* .content .inner-content .search {
     display: flex;
     position: relative;
     left: 50%;
@@ -68,7 +74,7 @@
     border-radius: 5px;
 }
 
-.content .search input[type=text] {
+.content .inner-content .search input[type=text] {
     position: absolute;
     float: left;
     width: calc(100% - 45px);
