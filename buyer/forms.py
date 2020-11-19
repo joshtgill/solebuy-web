@@ -8,6 +8,6 @@ class FilterForm(forms.Form):
 class SortForm(forms.Form):
     sortField = forms.ChoiceField(label='Sort by',
                                   widget=forms.Select(attrs={'onchange': 'this.form.submit();'}),
-                                  choices = (('RANKING', 'Our ranking'),
+                                  choices = (('RANKING', 'Our ranking (best to worst)'),
                                              ('PRICE_LOW', 'Starting price (low to high)'),
                                              ('PRICE_HIGH', 'Starting price (high to low)')))
