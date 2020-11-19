@@ -18,8 +18,6 @@ function displayProductPopup(productId) {
     addDetail(detailsDiv, 'Display', `${product['displayDescription']}`);
     addDetail(detailsDiv, 'Camera', `${product['cameraDescription']}`);
     addDetail(detailsDiv, 'Battery life', `${product['batteryDescription']}`);
-    addDetail(detailsDiv, 'Internals', `${product['internalsDescription']}`);
-    addDetail(detailsDiv, 'Similar products', `${product['alternativeProductNames']}`);
 
     // Show product popup
     productPopup.style.display = "block";

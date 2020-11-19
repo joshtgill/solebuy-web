@@ -40,8 +40,6 @@ class Product(models.Model):
     cameraDescription = models.CharField(max_length=LENGTH_MEDIUM, default='')
     batteryDescription = models.CharField(max_length=LENGTH_SHORT, default='')
     displayDescription = models.CharField(max_length=LENGTH_MEDIUM, default='')
-    internalsDescription = models.CharField(max_length=LENGTH_SHORT, default='')
-    alternativeProductNames = models.CharField(max_length=LENGTH_MEDIUM, default='')
     ranking = models.IntegerField(default=100)
 
     category = models.ForeignKey(Category, on_delete=models.CASCADE)

@@ -115,8 +115,7 @@ def serializeProducts(products):
                                       'imageFileName': product.imageFileName, 'prosSummary': product.prosSummary,
                                       'consSummary': product.consSummary, 'entryCapacity': product.entryCapacity,
                                       'cameraDescription': product.cameraDescription, 'batteryDescription': product.batteryDescription,
-                                      'displayDescription': product.displayDescription, 'internalsDescription': product.internalsDescription,
-                                      'alternativeProductNames': product.alternativeProductNames},
+                                      'displayDescription': product.displayDescription},
                              'pros': Pro.objects.filter(product=product), 'cons': Con.objects.filter(product=product)})
 
     return productsData
