@@ -11,23 +11,46 @@
 	<body>
 		{% include "topnav/topnav.html" %}
 
+		{% comment %} <div class="content">
+		<div style="display: inline-block; background-color: red; width: auto">
+			<h1>josh</h1>
+			<h1>josh</h1>
+		</div>
+		</div> {% endcomment %}
 		<div class="content">
 			{% include "category_bar.html"%}
+			<div class="slogan-mobile">
+				<div class="slogan-word-mobile" style="background-color: rgb(100, 100, 100)">
+					<h1>Search.</h1>
+				</div>
+				<div class="slogan-word-mobile" style="background-color: rgb(200, 200, 200)">
+					<h1 style="color: rgb(40, 40, 40)">Answer.</h1>
+				</div>
+				<div class="slogan-word-mobile" style="background-color: rgb(150, 150, 150)">
+					<h1>Done.</h1>
+				</div>
+			</div>
 			<div class="inner-content">
-				<div class="flag">
-					<div class="slogan">
-						<h1 style="background-color: rgb(100, 100, 100);">Search.</h1>
-						<h1 style="background-color: rgb(200, 200, 200); color: rgb(40, 40, 40)">Answer.</h1>
-						<h1 style="background-color: rgb(150, 150, 150);">Done.</h1>
+				<div class="slogan">
+					<div class="slogan-word" style="background-color: rgb(100, 100, 100)">
+						<h1>Search.</h1>
 					</div>
-					<div class="pitch">
-						<h1>Why SoleBuy?</h1>
-						<h2><b><i>No</i></b> long reviews.</h2>
-						<h2><b><i>No</i></b> abstract spec sheets.</h2>
-						<h2><b><i>No</i></b> biased marketing.</h2>
-						<h2 style="margin-top: 10px">We simply find the best product for <i>your</i> needs.</h2>
-						<h2 style="margin-top: 10px">To get started, explore a category above.</h2>
+					<div class="slogan-word" style="background-color: rgb(200, 200, 200)">
+						<h1 style="color: rgb(40, 40, 40)">Answer.</h1>
 					</div>
+					<div class="slogan-word" style="background-color: rgb(150, 150, 150)">
+						<h1>Done.</h1>
+					</div>
+				</div>
+				<div class="pitch">
+					<h1>Why SoleBuy?</h1>
+					<h2><b>No</b> long reviews. <b>No</b> abstract spec sheets. <b>No</b> biased marketing.</h2>
+					<h2>Our goal is to simplify online shopping.</h2>
+					<h2><i>We</i> find the best products on the market.</h2>
+					<h2 style="margin-top: 3px"><i>You</i> select the features you want.</h2>
+					<h2>That's it.</h2>
+					<h2>SoleBuy is completely free, ad-free, and account-free just use our links!</h2>
+					<h2 style="margin-top: 3px">To get started, explore a category above.</h2>
 				</div>
 			</div>
 			{% comment %} <div class="search">

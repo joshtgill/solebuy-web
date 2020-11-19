@@ -2,60 +2,104 @@
     display: flex;
     position: relative;
     width: 100%;
-    height: calc(100% - 200px);
-
-    justify-content: center;
-    align-items: center;
+    height: calc(100% - 100px);
 }
 
-.content .inner-content .flag {
+.content .inner-content .slogan {
     position: relative;
-    display: flex;
-    max-width: 1000px;
-
-    align-items: center;
-    justify-content: center;
-    border: 1px solid rgb(235, 235, 235);
-    border-left: none;
-}
-
-.content .inner-content .flag .slogan {
-    position: relative;
+    width: 25%;
     min-width: 350px;
-
-    text-align: center;
-    font-size: 100px;
+    height: 100%;
 }
 
-.content .inner-content .flag .slogan h1 {
-    padding: 30px 30px 30px 30px;
+.content .inner-content .slogan-word {
+    display: flex;
+    height: calc(100% / 3);
+
+    justify-content: center;
+    align-items: center;
+}
+
+.content .inner-content .slogan .slogan-word h1 {
+    padding: 0px 100px 0px 100px;
     margin: 0px 0px 0px 0px;
     font-size: 85px;
     font-weight: normal;
     color: rgb(255, 255, 255);
 }
 
-.content .inner-content .flag .pitch {
-    position: relative;
+.content .inner-content .pitch {
+    width: 75%;
 
-    padding: 0px 30px 0px 30px;
-    text-align: left;
-    font-size: 100px;
+    padding: 40px 50px 40px 50px;
+    overflow: auto;
 }
 
-.content .inner-content .flag .pitch h1 {
-    font-size: 35px;
-    font-weight: bold;
+.content .inner-content .pitch h1 {
     margin: 0px 0px 10px 0px;
-    color: rgb(34, 34, 34);
+    font-size: 90px;
+    font-weight: normal;
     color: rgb(50, 50, 50);
 }
 
-.content .inner-content .flag .pitch h2 {
-    margin: 3px 0px 3px 0px;
-    font-size: 25px;
+.content .inner-content .pitch h2 {
+    margin: 40px 0px 3px 0px;
+    font-size: 35px;
     font-weight: normal;
-    color: rgb(34, 34, 34);
+    color: rgb(50, 50, 50);
+}
+
+.slogan-mobile {
+    display: none;
+}
+
+@media only screen and (max-width: 1000px) {
+    .content .inner-content {
+        height: calc(100% - 180px);
+    }
+
+    .content .inner-content .slogan {
+        display: none;
+    }
+
+    .content .slogan-mobile {
+        display: flex;
+        height: 80px;
+
+        background-color: red;
+    }
+
+    .content .slogan-mobile .slogan-word-mobile {
+        display: flex;
+        width: calc(100% / 3);
+        height: 100%;
+
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .content .slogan-mobile .slogan-word-mobile h1 {
+        margin: 0px;
+        padding: 20px 0px 20px 0px;
+        font-weight: normal;
+        color: rgb(255, 255, 255);
+    }
+
+    .content .inner-content .pitch {
+        width: 100%;
+
+        padding: 20px 20px 0px 20px;
+    }
+
+    .content .inner-content .pitch h1 {
+        font-size: 60px;
+    }
+
+    .content .inner-content .pitch h2 {
+        margin-top: 20px;
+        font-size: 30px;
+    }
 }
 
 /* .content .inner-content .search {
