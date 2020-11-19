@@ -35,7 +35,7 @@
     color: rgb(255, 255, 255);
 }
 
-.content .inner-content .flag .description {
+.content .inner-content .flag .pitch {
     position: relative;
 
     padding: 0px 30px 0px 30px;
@@ -43,7 +43,7 @@
     font-size: 100px;
 }
 
-.content .inner-content .flag .description h1 {
+.content .inner-content .flag .pitch h1 {
     font-size: 35px;
     font-weight: bold;
     margin: 0px 0px 10px 0px;
@@ -51,7 +51,7 @@
     color: rgb(50, 50, 50);
 }
 
-.content .inner-content .flag .description h2 {
+.content .inner-content .flag .pitch h2 {
     margin: 3px 0px 3px 0px;
     font-size: 25px;
     font-weight: normal;
