@@ -1,5 +1,10 @@
 .topnav {
     display: flex;
+    flex-direction: column;
+}
+
+.topnav .primary {
+    display: flex;
     width: 100%;
     height: 53px;
     z-index: 1;
@@ -10,15 +15,32 @@
     overflow: hidden;
 }
 
-.topnav-center-header {
+.topnav .primary .topnav-left {
+    position: absolute;
+    left: 0;
+}
+
+.topnav .primary .topnav-left h1 {
+    margin-left: 10px;
+    font-size: 18px;
+    font-weight: normal;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+.topnav .primary .topnav-left h1:hover {
+    color: rgb(238, 238, 238);
+}
+
+.topnav .primary .topnav-center {
     display: flex;
 }
 
-.topnav-center-header a {
+.topnav .primary .topnav-center a {
     text-decoration: none;
 }
 
-.topnav-center-header j {
+.topnav .primary .topnav-center j {
     position: relative;
 
     font-size: 21px;
@@ -26,16 +48,69 @@
     color: rgb(255, 255, 255);
 }
 
-.topnav-center-header j:hover {
+.topnav .primary .topnav-center j:hover {
     color: rgb(238, 238, 238);
 }
 
-.topnav-center-header img {
+.topnav .primary .topnav-center img {
     position: relative;
 
     vertical-align: middle;
     width: 20px;
     height: 20px;
+}
+
+.topnav .primary .topnav-right {
+    position: absolute;
+    right: 0;
+}
+
+.topnav .primary .topnav-right a {
+    margin-right: 10px;
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+.topnav .primary .topnav-right a:hover {
+    color: rgb(238, 238, 238);
+}
+
+.topnav .category-bar {
+    display: none;
+    position: relative;
+    top: 0px;
+    width: 100%;
+    height: 99px;
+
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(17, 17, 17);
+    background-color: rgb(242, 242, 242);
+}
+
+.topnav .category-bar .category {
+    display: inline-block;
+    position: relative;
+
+    margin: 10px 50px 10px 50px;
+}
+
+.topnav .category-bar .category img {
+    width: 60px;
+    height: 60px;
+}
+
+.topnav .category-bar .category h1 {
+    margin: 5px 0px 0px 0px;
+    font-size: 16px;
+    color: rgb(21, 21, 21);
+    font-weight: normal;
+}
+
+.topnav .category-bar .category h3:hover {
+    color: rgb(34, 34, 34);
 }
 
 /* .topnav .search {
@@ -76,19 +151,3 @@
     width: 30px;
     height: 30px;
 } */
-
-.topnav-right-header {
-    position: absolute;
-    right: 0;
-}
-
-.topnav-right-header a {
-    margin-right: 10px;
-    font-size: 18px;
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-}
-
-.topnav-right-header a:hover {
-    color: rgb(238, 238, 238);
-}

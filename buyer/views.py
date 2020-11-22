@@ -18,21 +18,27 @@ def category(request):
     content = {}
 
     # Attempt to get category object from form
+    categories = Category.objects.all()
     formCategoryName = ''
     category = None
     categoryForm = CategoryForm(request.GET)
     if categoryForm.is_valid():
         try:
             formCategoryName = categoryForm.cleaned_data['name'].lower().capitalize()
-            category = Category.objects.get(name=formCategoryName)
+            category = categories.get(name=formCategoryName)
             content.update({'categoryForm': CategoryForm({'name': formCategoryName})})
         except:
             pass
 
+    # Category names for category bar
+    categoryNames = [category.name for category in categories]
+    content.update({'categoryNames': categoryNames})
+
     if not category:
-        return render(request, 'category_not_found.html', {'categoryForm': CategoryForm(),
-                                                           'formCategoryName': formCategoryName,
-                                                           'categoryNames': [category.name for category in Category.objects.all()]})
+        content.update({'categoryForm': CategoryForm(), 'formCategoryName': formCategoryName})
+        return render(request, 'category_not_found.html', content)
+
+    # Store category and continue
     content.update({'category': category})
 
     # Get the category's products and serialized assisters

@@ -8,17 +8,10 @@
 		<link rel="stylesheet" type="text/css" href="{% static 'styles/common.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'styles/home.css' %}">
 	</head>
-	<body>
+	<body onload="displayCategoryBar()">
 		{% include "topnav/topnav_home.html" %}
 
-		{% comment %} <div class="content">
-		<div style="display: inline-block; background-color: red; width: auto">
-			<h1>josh</h1>
-			<h1>josh</h1>
-		</div>
-		</div> {% endcomment %}
 		<div class="content">
-			{% include "category_bar.html"%}
 			<div class="slogan-mobile">
 				<div class="slogan-word-mobile" style="background-color: rgb(100, 100, 100)">
 					<h1>Search.</h1>
@@ -61,4 +54,7 @@
 			</div> {% endcomment %}
 		</div>
 	</body>
+
+	<script src="{% static 'scripts/topnav.js' %}"></script>
+
 </html>
