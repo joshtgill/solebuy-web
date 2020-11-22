@@ -1,4 +1,4 @@
-var productPopup = document.getElementById('productPopup');
+var productPopup = document.getElementById('productPopupContainer');
 
 
 function displayProductPopup(productId) {
