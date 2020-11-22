@@ -3,6 +3,12 @@
 <link rel="stylesheet" type="text/css" href="{% static 'styles/topnav.css' %}">
 
 <div class="topnav">
+    {% comment %} <div class="search">
+        <input type="image" src="{% static 'images/search_topnav.png' %}" alt="Search Submit" />
+        <form action="" method="GET">
+            {{ categoryForm }}
+        </form>
+    </div> {% endcomment %}
     <div class="topnav-center-header">
         <a href="{% url 'home' %}">
             <j><b><i>SoleBuy</i></b></j>
