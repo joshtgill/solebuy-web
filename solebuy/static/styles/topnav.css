@@ -1,20 +1,17 @@
 .topnav {
-    position: fixed;
-    top: 0;
+    display: flex;
     width: 100%;
     height: 53px;
     z-index: 1;
 
+    justify-content: center;
+    align-items: center;
     background-color: rgb(17, 17, 17);
     overflow: hidden;
 }
 
 .topnav-center-header {
-    position: absolute;
     display: flex;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }
 
 .topnav-center-header a {
@@ -82,10 +79,7 @@
 
 .topnav-right-header {
     position: absolute;
-    float: left;
     right: 0;
-    top: 50%;
-    transform: translate(0%, -50%);
 }
 
 .topnav-right-header a {

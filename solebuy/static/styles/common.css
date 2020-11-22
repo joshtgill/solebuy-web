@@ -1,14 +1,16 @@
 body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+
     margin: 0;
     font-family: Roboto;
 }
 
 .content {
-    position: relative;
-    width: 100%;
-    height: calc(100% - 53px);
+    flex: 1;
 
-    padding-top: 53px;
     background-color: rgb(255, 255, 255);
     overflow: auto;
 }
