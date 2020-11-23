@@ -57,4 +57,11 @@ document.getElementsByClassName('close')[0].onclick = function() {
 window.onclick = function(event) {
     if (event.target == productPopup)
         hideProductPopup();
+    else if (categoryBar.style.display == 'flex' &&
+             event.target.id != 'topNavLeftH1')
+        categoryBar.style.display = 'none';
+}
+
+document.getElementById('categoryContent').onscroll = function(event) {
+    categoryBar.style.display = 'none';
 }

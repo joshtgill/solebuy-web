@@ -5,7 +5,7 @@ function toggleCategoryBar() {
     if (!categoryBar.style.display
         || categoryBar.style.display == 'none') {
             categoryBar.style.backgroundColor = 'rgb(17, 17, 17)';
-            document.getElementById('categoryH1').style.color = 'white';
+            document.getElementById('categoryBarItemH1').style.color = 'rgb(255, 255, 255)';
             displayCategoryBar()
         }
     else
