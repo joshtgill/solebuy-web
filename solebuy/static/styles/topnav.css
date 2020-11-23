@@ -18,10 +18,11 @@
 .topnav .primary .left {
     position: absolute;
     left: 0;
+
+    margin-left: 10px;
 }
 
 .topnav .primary .left h1 {
-    margin-left: 10px;
     font-size: 18px;
     font-weight: normal;
     color: rgb(255, 255, 255);
@@ -63,10 +64,12 @@
 .topnav .primary .right {
     position: absolute;
     right: 0;
+
+    margin-right: 10px;
 }
 
 .topnav .primary .right a {
-    margin-right: 10px;
+    margin-left: 10px;
     font-size: 18px;
     color: rgb(255, 255, 255);
     text-decoration: none;

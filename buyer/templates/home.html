@@ -8,8 +8,8 @@
 		<link rel="stylesheet" type="text/css" href="{% static 'styles/common.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'styles/home.css' %}">
 	</head>
-	<body onload="displayCategoryBar()">
-		{% include "topnav/topnav_home.html" %}
+	<body onload="initHomePage()">
+		{% include "topnav/topnav.html" %}
 
 		<div class="content">
 			<div class="slogan-mobile">
@@ -56,5 +56,6 @@
 	</body>
 
 	<script src="{% static 'scripts/topnav.js' %}"></script>
+	<script src="{% static 'scripts/home.js' %}"></script>
 
 </html>
