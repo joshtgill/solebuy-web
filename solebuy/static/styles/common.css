@@ -9,6 +9,8 @@ body {
 }
 
 .content {
+    display: flex;
+    flex-direction: row;
     flex: 1;
 
     background-color: rgb(255, 255, 255);

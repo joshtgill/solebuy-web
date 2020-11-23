@@ -1,3 +1,7 @@
+.content {
+    flex-direction: column;
+}
+
 .content .assisters {
     position: relative;
 

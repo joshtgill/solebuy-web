@@ -1,3 +1,7 @@
+.content {
+    flex-direction: column;
+}
+
 .content h1 {
     font-size: 100px;
     padding-top: 5%;

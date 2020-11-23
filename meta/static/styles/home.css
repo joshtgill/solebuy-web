@@ -1,18 +1,12 @@
-.content .inner-content {
+.content .slogan {
+    position: relative;
     display: flex;
-    position: relative;
-    width: 100%;
-    height: calc(100% - 1px);
-}
-
-.content .inner-content .slogan {
-    position: relative;
-    width: 25%;
+    flex-direction: column;
     min-width: 350px;
     height: 100%;
 }
 
-.content .inner-content .slogan-word {
+.content .slogan-word {
     display: flex;
     height: calc(100% / 3);
 
@@ -20,89 +14,69 @@
     align-items: center;
 }
 
-.content .inner-content .slogan .slogan-word h1 {
-    padding: 0px 100px 0px 100px;
+.content .slogan .slogan-word h1 {
+    padding: 0px 80px 0px 80px;
     margin: 0px 0px 0px 0px;
     font-size: 85px;
     font-weight: normal;
     color: rgb(255, 255, 255);
 }
 
-.content .inner-content .pitch {
-    width: 75%;
-
+.content .pitch {
     padding: 40px 50px 40px 50px;
     overflow: auto;
     border-top: 1px solid rgb(221, 221, 221);
 }
 
-.content .inner-content .pitch h1 {
+.content .pitch h1 {
     margin: 0px 0px 10px 0px;
     font-size: 90px;
     font-weight: normal;
     color: rgb(50, 50, 50);
 }
 
-.content .inner-content .pitch p {
+.content .pitch p {
     font-size: 35px;
     font-weight: normal;
     color: rgb(50, 50, 50);
 }
 
-.slogan-mobile {
-    display: none;
-}
-
 @media only screen and (max-width: 1000px) {
-    .content .inner-content {
-        height: calc(100% - 180px);
+    .content {
+        flex-direction: column;
     }
 
-    .content .inner-content .slogan {
-        display: none;
-    }
-
-    .content .slogan-mobile {
-        display: flex;
-        height: 80px;
-
-        background-color: red;
-    }
-
-    .content .slogan-mobile .slogan-word-mobile {
-        display: flex;
-        width: calc(100% / 3);
-        height: 100%;
-
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
-
-    .content .slogan-mobile .slogan-word-mobile h1 {
-        margin: 0px;
-        padding: 20px 0px 20px 0px;
-        font-weight: normal;
-        color: rgb(255, 255, 255);
-    }
-
-    .content .inner-content .pitch {
+    .content .slogan {
+        flex-direction: row;
+        height: auto;
         width: 100%;
+    }
 
+    .content .slogan-word {
+        width: calc(100% / 3);
+        height: auto;
+    }
+
+    .content .slogan .slogan-word h1 {
+        font-size: 40px;
+        padding: 20px 0px 20px 0px;
+    }
+
+    .content .pitch {
         padding: 20px 20px 0px 20px;
     }
 
-    .content .inner-content .pitch h1 {
+    .content .pitch h1 {
         font-size: 60px;
     }
 
-    .content .inner-content .pitch p {
+    .content .pitch p {
         margin-top: 20px;
         font-size: 30px;
     }
 }
 
-/* .content .inner-content .search {
+/* .content .search {
     display: flex;
     position: relative;
     left: 50%;
@@ -118,7 +92,7 @@
     border-radius: 5px;
 }
 
-.content .inner-content .search input[type=text] {
+.content .search input[type=text] {
     position: absolute;
     float: left;
     width: calc(100% - 45px);
