@@ -6,14 +6,6 @@ from buyer.src.assistant import Assistant
 from datetime import datetime
 
 
-def home(request):
-    # Get all category names
-    content = {'categoryForm': CategoryForm(),
-               'categoryNames': [category.name for category in Category.objects.all()]}
-
-    return render(request, 'home.html', content)
-
-
 def category(request):
     content = {}
 
