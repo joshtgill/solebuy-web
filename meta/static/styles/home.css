@@ -76,6 +76,13 @@
     }
 }
 
+@media only screen and (max-width: 600px) {
+    .content .slogan .slogan-word h1 {
+        font-size: 30px;
+        padding: 20px 0px 20px 0px;
+    }
+}
+
 /* .content .search {
     display: flex;
     position: relative;
