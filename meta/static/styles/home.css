@@ -43,8 +43,7 @@
     color: rgb(50, 50, 50);
 }
 
-.content .inner-content .pitch h2 {
-    margin: 40px 0px 3px 0px;
+.content .inner-content .pitch p {
     font-size: 35px;
     font-weight: normal;
     color: rgb(50, 50, 50);
@@ -97,7 +96,7 @@
         font-size: 60px;
     }
 
-    .content .inner-content .pitch h2 {
+    .content .inner-content .pitch p {
         margin-top: 20px;
         font-size: 30px;
     }
