@@ -15,12 +15,12 @@
     overflow: hidden;
 }
 
-.topnav .primary .topnav-left {
+.topnav .primary .left {
     position: absolute;
     left: 0;
 }
 
-.topnav .primary .topnav-left h1 {
+.topnav .primary .left h1 {
     margin-left: 10px;
     font-size: 18px;
     font-weight: normal;
@@ -28,19 +28,19 @@
     cursor: pointer;
 }
 
-.topnav .primary .topnav-left h1:hover {
+.topnav .primary .left h1:hover {
     color: rgb(238, 238, 238);
 }
 
-.topnav .primary .topnav-center {
+.topnav .primary .center {
     display: flex;
 }
 
-.topnav .primary .topnav-center a {
+.topnav .primary .center a {
     text-decoration: none;
 }
 
-.topnav .primary .topnav-center j {
+.topnav .primary .center j {
     position: relative;
 
     font-size: 21px;
@@ -48,11 +48,11 @@
     color: rgb(255, 255, 255);
 }
 
-.topnav .primary .topnav-center j:hover {
+.topnav .primary .center j:hover {
     color: rgb(238, 238, 238);
 }
 
-.topnav .primary .topnav-center img {
+.topnav .primary .center img {
     position: relative;
 
     vertical-align: middle;
@@ -60,19 +60,19 @@
     height: 20px;
 }
 
-.topnav .primary .topnav-right {
+.topnav .primary .right {
     position: absolute;
     right: 0;
 }
 
-.topnav .primary .topnav-right a {
+.topnav .primary .right a {
     margin-right: 10px;
     font-size: 18px;
     color: rgb(255, 255, 255);
     text-decoration: none;
 }
 
-.topnav .primary .topnav-right a:hover {
+.topnav .primary .right a:hover {
     color: rgb(238, 238, 238);
 }
 
