@@ -4,6 +4,8 @@
 	<head>
 		<title>SoleBuy - {{ category.name }}</title>
 
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+
 		<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="{% static 'styles/common.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'styles/category.css' %}">
@@ -65,7 +67,6 @@
 										<h1>{{ pro.contents }}</h1>
 									</div>
 								{% endfor %}
-								<div class="spacer"></div>
 								{% for con in product.cons %}
 									<div class="procon">
 										<img src="{% static 'images/minus.png' %}" alt="Plus">

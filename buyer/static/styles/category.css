@@ -4,20 +4,21 @@
 
 .content .assisters {
     position: relative;
+    display: flex;
+    flex-wrap: wrap;
 
-    padding-bottom: 10px;
-    text-align: center;
+    padding: 2vh 0 2vh 0;
+    justify-content: center;
     background-color: rgb(242, 242, 242);
     border-bottom: 1px solid rgb(221, 221, 221);
 }
 
 .content .assisters .assister {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
 
-    vertical-align: top;
-    margin-left: 50px;
-    margin-right: 50px;
-    margin-top: 20px;
+    margin: 0 4vw 0 4vw;
+    text-align: center;
 }
 
 .content .assisters .assister .header {
@@ -28,9 +29,9 @@
 }
 
 .content .assisters .assister .header h1 {
-    margin: 0px 0px 0px 0px;
-    color: rgb(51, 51, 51);
+    margin: 0;
     font-size: 20px;
+    color: rgb(51, 51, 51);
 }
 
 .content .assisters .assister .header img {
@@ -42,29 +43,29 @@
 }
 
 .content .assisters .assister hr {
-    width: 50%;
+    width: 40%;
 
-    margin: 3px auto 3px auto;
+    margin: 0.5vh auto 0.5vh auto;
 }
 
 .content .assisters .assister h2 {
-    margin: 0px 0px 10px 0px;
+    margin: 0 0 1vh 0;
     font-size: 13px;
     color: rgb(51, 51, 51);
 }
 
 .content .assisters .assister button {
-    display: block;
+    display: flex;
     position: relative;
-    left: 50%;
-    transform: translate(-50%, 0%);
     width: 250px;
     height: 35px;
 
-    margin: 4px 0px 4px 0px;
-    background-color: rgb(255, 255, 255);
+    margin: 0.5vh 0 0.5vh 0;
+    justify-content: center;
+    align-items: center;
     font-size: 16px;
     color: rgb(34, 34, 34);
+    background-color: rgb(255, 255, 255);
     border-radius: 5px;
 }
 
@@ -77,24 +78,24 @@
 }
 
 .content .results {
-    position: relative;
-
-    text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .content .results .header {
-    padding: 10px 0px 5px 80px;
-    text-align: left;
+    display: flex;
+
+    margin: 2vh 0vw 0 3vw;
 }
 
 .content .results .header label {
+    margin: 0 0.5vw 0 0;
     font-size: 18px;
-    margin-right: 10px;
 }
 
 .content .results .header select {
     font-size: 17px;
-    padding: 5px 10px 5px 10px;
+    padding: 0.5vh 0.5vw 0.5vh 0.5vw;
     background-color: rgb(255, 255, 255);
     border-radius: 5px;
     outline: none;
@@ -106,8 +107,11 @@
 
 .content .results .products {
     position: relative;
+    display: flex;
+    flex-wrap: wrap;
 
-    margin: 0px 60px 0px 60px;
+    justify-content: center;
+    align-items: center;
 }
 
 .content .results .products a {
@@ -116,87 +120,74 @@
 }
 
 .content .results .products .product {
-    display: inline-block;
+    display: flex;
     width: 470px;
-    height: 240px;
 
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-bottom: 40px;
-    cursor: pointer;
+    margin: 2vh 1vw 2vh 1vw;
     border: 1px solid rgb(150, 150, 150);
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .content .results .products .product .image-container {
-    position: relative;
-    float: left;
-    width: 50%;
-    height: 100%;
+    display: flex;
 
+    padding: 2vh 0vw 2vh 0vw;
+    justify-content: center;
+    align-items: center;
     border-radius: 10px;
 }
 
 .content .results .products .product .image-container img {
-    position: relative;
-    top: 50%;
-    transform: translate(0%, -50%);
     width: 210px;
 }
 
 .content .results .products .product .details {
     position: relative;
-    float: left;
-    width: calc(50% - 20px);
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 
-    padding-right: 20px;
+    padding: 1vh 1vw 1vh 1vw;;
+    align-items: center;
     border-radius: 0px 10px 10px 0px;
     background-color: rgb(245, 245, 245);
 }
 
 .content .results .products .product .details h1 {
     font-size: 20px;
-    margin-bottom: 0px;
+    margin: 0;
     font-weight: normal;
 }
 
 .content .results .products .product .details h2 {
     font-size: 15px;
-    margin-top: 2px;
-    margin-bottom: 3px;
+    margin: 0.2vh 0 0 0;
+}
+
+.content .results .products .product .details hr {
+    width: 50%;
+
+    margin: 0.6vh 0 0 0;
 }
 
 .content .results .products .product .details .procon {
     display: flex;
     width: 100%;
 
+    margin: 0.4vh 0 0.4vh 0;
     align-items: center;
     justify-content: left;
-    margin: 5px;
-    margin-left: 15px;
 }
 
 .content .results .products .product .details .procon img {
     width: 12px;
     height: 12px;
-    padding: 0px;
-    top: 0%;
-    transform: translate(0%, 0%);
 }
 
 .content .results .products .product .details .procon h1 {
     position: relative;
-    margin: 0px;
-    margin-left: 10px;
+
+    margin: 0 0 0 0.5vw;
     font-size: 16px;
-    text-align: left;
-}
-
-.content .results .products .product .details hr {
-    width: 50%;
-}
-
-.content .results .products .product .details .spacer {
-    height: 5px;
 }
