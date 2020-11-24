@@ -48,12 +48,6 @@ function hideProductPopup() {
     productPopup.style.display = 'none';
 }
 
-
-document.getElementsByClassName('close')[0].onclick = function() {
-     hideProductPopup();
-}
-
-
 window.onclick = function(event) {
     if (event.target == productPopup)
         hideProductPopup();

@@ -5,28 +5,24 @@
 
 <div id="productPopupContainer" class="product-popup-container">
     <div class="product-popup">
-        <div class="close">
-            &times;
+        <div class="image-container">
+            <img id="image">
+            <h1 id="name"></h1>
         </div>
-        <div class="info">
-            <div class="imagename">
-                <img id="image">
-                <h1 id="name"></h1>
-            </div>
-            <div class="summaries">
-                <fieldset style="margin-bottom: 10px">
-                    <legend>&nbsp The good &nbsp</legend>
-                    <p id="prosSummary"></p>
-                </fieldset>
-                <fieldset style="">
-                    <legend>&nbsp The bad &nbsp</legend>
-                    <p id="consSummary"></p>
-                </fieldset>
-            </div>
+        <div class="summaries">
+            <fieldset>
+                <legend>&nbsp The good &nbsp</legend>
+                <p id="prosSummary"></p>
+            </fieldset>
+            <fieldset>
+                <legend>&nbsp The bad &nbsp</legend>
+                <p id="consSummary"></p>
+            </fieldset>
         </div>
-        <div class="separator">
-            Specs you care about
+        <div class="specs">
+            <h1>Specs that matter</h1>
+            <hr>
+            <div id="details" class="details"></div>
         </div>
-        <div id="details" class="details"></div>
     </div>
 </div>
