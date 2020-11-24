@@ -61,18 +61,21 @@
 								<h1>{{ product.data.name }}</h1>
 								<h2><b>${{ product.data.price|floatformat:2 }}</b></h2>
 								<hr>
-								{% for pro in product.pros %}
-									<div class="procon">
-										<img src="{% static 'images/plus.png' %}" alt="Plus">
-										<h1>{{ pro.contents }}</h1>
-									</div>
-								{% endfor %}
-								{% for con in product.cons %}
-									<div class="procon">
-										<img src="{% static 'images/minus.png' %}" alt="Plus">
-										<h1>{{ con.contents }}</h1>
-									</div>
-								{% endfor %}
+								<div class="procons">
+									{% for pro in product.pros %}
+										<div class="procon">
+											<img src="{% static 'images/plus.png' %}" alt="Plus">
+											<h1>{{ pro.contents }}</h1>
+										</div>
+									{% endfor %}
+									<div class="spacer"></div>
+									{% for con in product.cons %}
+										<div class="procon">
+											<img src="{% static 'images/minus.png' %}" alt="Plus">
+											<h1>{{ con.contents }}</h1>
+										</div>
+									{% endfor %}
+								</div>
 							</div>
 						</div>
 					{% endfor %}
