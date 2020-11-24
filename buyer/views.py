@@ -7,30 +7,17 @@ from datetime import datetime
 
 
 def category(request):
-    content = {}
-
-    # Attempt to get category object from form
+    # Get all categories from database
     categories = Category.objects.all()
-    formCategoryName = ''
+
+    # Category names for category bar
+    content = {'categoryNames': [category.name for category in categories]}
+
+    # Get selected category object from form (guaranteed valid)
     category = None
     categoryForm = CategoryForm(request.GET)
     if categoryForm.is_valid():
-        try:
-            formCategoryName = categoryForm.cleaned_data['name'].lower().capitalize()
-            category = categories.get(name=formCategoryName)
-            content.update({'categoryForm': CategoryForm({'name': formCategoryName})})
-        except:
-            pass
-
-    # Category names for category bar
-    categoryNames = [category.name for category in categories]
-    content.update({'categoryNames': categoryNames})
-
-    if not category:
-        content.update({'categoryForm': CategoryForm(), 'formCategoryName': formCategoryName})
-        return render(request, 'category_not_found.html', content)
-
-    # Store category and continue
+        category = categories.get(name=categoryForm.cleaned_data['name'].lower().capitalize())
     content.update({'category': category})
 
     # Get the category's products and serialized assisters
