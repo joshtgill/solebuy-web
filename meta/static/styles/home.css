@@ -84,7 +84,7 @@
     }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 580px) {
     .content .slogan .slogan-word h1 {
         font-size: 30px;
     }
