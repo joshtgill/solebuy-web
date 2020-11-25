@@ -6,13 +6,20 @@ body {
 
     margin: 0;
     font-family: Roboto;
+    overflow: hidden;
 }
 
 .content {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex: 1;
 
     background-color: rgb(255, 255, 255);
     overflow: auto;
+}
+
+@media only screen and (max-width: 580px) {
+    .content {
+        padding-bottom: 17vh;
+    }
 }

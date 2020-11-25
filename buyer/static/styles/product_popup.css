@@ -1,5 +1,5 @@
 .product-popup-container {
-    position: absolute;
+    position: fixed;
     z-index: 1;
     width: 100vw;
     height: 100vh;
@@ -122,5 +122,9 @@
         width: 95vw;
         min-width: unset;
         max-width: unset;
+    }
+
+    .product-popup-container .product-popup .details {
+        padding-bottom: 17vh;
     }
 }

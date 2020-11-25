@@ -1,3 +1,7 @@
+.content {
+    flex-direction: row;
+}
+
 .content .slogan {
     position: relative;
     display: flex;
@@ -89,33 +93,3 @@
         font-size: 30px;
     }
 }
-
-/* .content .search {
-    display: flex;
-    position: relative;
-    left: 50%;
-    transform: translate(-50%, 0%);
-    width: 40%;
-    max-width: 800px;
-    min-width: 500px;
-
-    padding: 8px 8px 8px 8px;
-    font-size: 30px;
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(68, 68, 68);
-    border-radius: 5px;
-}
-
-.content .search input[type=text] {
-    position: absolute;
-    float: left;
-    width: calc(100% - 45px);
-    top: 50%;
-    transform: translate(0%, -50%);
-
-    font-size: 25px;
-    background-color: rgb(255, 255, 255);
-    color: rgb(34, 34, 34);
-    border: none;
-    outline: none;
-} */

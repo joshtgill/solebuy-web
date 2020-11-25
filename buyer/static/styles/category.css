@@ -1,7 +1,3 @@
-.content {
-    flex-direction: column;
-}
-
 .content .assisters {
     display: flex;
     flex-wrap: wrap;
@@ -219,6 +215,10 @@
 }
 
 @media only screen and (max-width: 580px) {
+    .content {
+        display: block;
+    }
+
     .content .results .header {
         margin: 2vh 0 0 0;
         justify-content: center;
@@ -229,6 +229,10 @@
         width: 80vw;
         max-width: 300px;
         height: auto;
+    }
+
+    .content .results .products .product .details {
+        flex: 1 0 auto;
     }
 
     .content .results .products .product .details .procons .spacer {

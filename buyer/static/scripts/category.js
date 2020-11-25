@@ -1,4 +1,4 @@
-var productPopup = document.getElementById('productPopupContainer');
+var productPopupContainer = document.getElementById('productPopupContainer');
 
 
 function displayProductPopup(productId) {
@@ -20,7 +20,7 @@ function displayProductPopup(productId) {
     addDetail(detailsDiv, 'Battery life', `${product['batteryDescription']}`);
 
     // Show product popup
-    productPopup.style.display = "block";
+    productPopupContainer.style.display = "block";
 }
 
 function addDetail(detailsDiv, label, value) {
@@ -44,18 +44,16 @@ function addDetail(detailsDiv, label, value) {
     detailsDiv.appendChild(detailDiv);
 }
 
-function hideProductPopup() {
-    productPopup.style.display = 'none';
+productPopupContainer.onclick = function(event) {
+    productPopupContainer.style.display = 'none';
 }
 
 window.onclick = function(event) {
-    if (event.target == productPopup)
-        hideProductPopup();
-    else if (categoryBar.style.display == 'flex' &&
-             event.target.id != 'topNavLeftH1')
-        categoryBar.style.display = 'none';
+    if (categoryBar.style.display == 'flex' &&
+        event.target.id != 'topNavLeftH1')
+            hideCategoryBar();
 }
 
 document.getElementById('categoryContent').onscroll = function(event) {
-    categoryBar.style.display = 'none';
+    hideCategoryBar();
 }
