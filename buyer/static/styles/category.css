@@ -3,7 +3,6 @@
 }
 
 .content .assisters {
-    position: relative;
     display: flex;
     flex-wrap: wrap;
 
@@ -56,7 +55,6 @@
 
 .content .assisters .assister button {
     display: flex;
-    position: relative;
     width: 250px;
     height: 35px;
 
@@ -106,7 +104,6 @@
 }
 
 .content .results .products {
-    position: relative;
     display: flex;
     flex-wrap: wrap;
 
@@ -144,7 +141,6 @@
 }
 
 .content .results .products .product .details {
-    position: relative;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -192,8 +188,6 @@
 }
 
 .content .results .products .product .details .procons .procon h1 {
-    position: relative;
-
     margin: 0 0 0 8px;
     font-size: 16px;
     flex-wrap: wrap;
