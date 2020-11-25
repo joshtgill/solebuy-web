@@ -13,17 +13,18 @@ function displayProductPopup(productId) {
     document.getElementById('image').src = `/static/images/smartphone/products/${product['imageFileName']}`;
     document.getElementById('prosSummary').innerText = product['prosSummary'];
     document.getElementById('consSummary').innerText = product['consSummary'];
-    addDetail(detailsDiv, 'Starting price', `$${product['price'].toFixed(2)}`);
-    addDetail(detailsDiv, 'Starting capacity', `${product['entryCapacity']} GB`);
-    addDetail(detailsDiv, 'Display', `${product['displayDescription']}`);
-    addDetail(detailsDiv, 'Camera', `${product['cameraDescription']}`);
-    addDetail(detailsDiv, 'Battery life', `${product['batteryDescription']}`);
+    addProductDetail(detailsDiv, 'Starting price', `$${product['price'].toFixed(2)}`);
+    addProductDetail(detailsDiv, 'Starting capacity', `${product['entryCapacity']} GB`);
+    addProductDetail(detailsDiv, 'Display', `${product['displayDescription']}`);
+    addProductDetail(detailsDiv, 'Camera', `${product['cameraDescription']}`);
+    addProductDetail(detailsDiv, 'Battery life', `${product['batteryDescription']}`);
 
     // Show product popup
     productPopupContainer.style.display = "block";
 }
 
-function addDetail(detailsDiv, label, value) {
+
+function addProductDetail(detailsDiv, label, value) {
     var detailDiv = document.createElement('div');
     detailDiv.className = 'detail';
 
@@ -44,16 +45,19 @@ function addDetail(detailsDiv, label, value) {
     detailsDiv.appendChild(detailDiv);
 }
 
+
 productPopupContainer.onclick = function(event) {
     productPopupContainer.style.display = 'none';
 }
 
+
 window.onclick = function(event) {
-    if (categoryBar.style.display == 'flex' &&
-        event.target.id != 'topNavLeftH1')
+        if (categoryBar.style.display == 'flex' && event.target.id != 'categoriesClickable' &&
+        event.target.id != 'categoryBar')
             hideCategoryBar();
 }
 
-document.getElementById('categoryContent').onscroll = function(event) {
+
+document.getElementById('categoryContent').onscroll = function() {
     hideCategoryBar();
 }

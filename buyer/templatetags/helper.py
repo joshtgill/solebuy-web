@@ -20,8 +20,8 @@ def determineButtonValue(assisterId, filterId):
     return '{}.{}'.format(assisterId, filterId)
 
 
-@register.filter(name='buildCategoryIconPath')
-def buildCategoryIconPath(category):
+@register.filter(name='buildCategoryBarItemIconPath')
+def buildCategoryBarItemIconPath(category):
     return 'images/{}/icon.png'.format(category.lower())
 
 
