@@ -20,6 +20,8 @@ body {
 
 @media only screen and (max-width: 580px) {
     .content {
+        display: block;
+
         padding-bottom: 17vh;
     }
 }
