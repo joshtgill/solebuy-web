@@ -17,15 +17,24 @@
     overflow: hidden;
 }
 
-.top-nav .primary h1 {
+.top-nav .primary .categories {
     position: absolute;
     left: 0;
 
     margin-left: 10px;
+    cursor: pointer;
+}
+
+.top-nav .primary .categories h1 {
+    margin: 0;
+    padding: 10px 0 10px 0;
     font-size: 18px;
     font-weight: normal;
     color: rgb(255, 255, 255);
-    cursor: pointer;
+}
+
+.top-nav .primary .categories h1:hover {
+    color: rgb(238, 238, 238);
 }
 
 .top-nav .primary h1:hover {
@@ -81,7 +90,6 @@
 
 .top-nav .category-bar {
     position: relative;
-    top: 0px;
     width: 100%;
     display: none;
     justify-content: center;
@@ -104,7 +112,7 @@
 }
 
 .top-nav .category-bar .category h1 {
-    margin: 5px 0px 0px 0px;
+    margin: 5px 0 0 0;
     font-size: 16px;
     color: rgb(255, 255, 255);
     font-weight: normal;
