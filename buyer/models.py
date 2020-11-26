@@ -20,6 +20,7 @@ class Assister(models.Model):
 
 class Filter(models.Model):
     contents = models.CharField(max_length=LENGTH_SHORT)
+    explanation = models.CharField(max_length=LENGTH_XLONG, default='')
 
     assister = models.ForeignKey(Assister, on_delete=models.CASCADE)
 
