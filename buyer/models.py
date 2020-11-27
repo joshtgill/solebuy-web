@@ -11,7 +11,6 @@ class Category(models.Model):
 
 
 class Assister(models.Model):
-    name = models.CharField(max_length=LENGTH_SHORT)
     prompt = models.CharField(max_length=LENGTH_MEDIUM)
     decisive = models.BooleanField()
 

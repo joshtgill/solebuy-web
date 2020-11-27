@@ -60,7 +60,7 @@ def updateAFIdMap(request, selectValue, assistersData):
     userAFIds = request.session['userAFIds']
     if filterId not in userAFIds[assisterId]:
         # If Assister is decisive, only allow a single filter to be selected at a time
-        if assistersData[assisterId].get('object').decisive:
+        if assistersData[assisterId].get('decisive'):
             userAFIds[assisterId].clear()
 
         userAFIds[assisterId].append(filterId)
@@ -85,9 +85,12 @@ def resetSortValue(request):
 def serializeAssisters(category):
     assistersData = []
     for assister in Assister.objects.filter(category=category):
-        assisterData = {'object': assister,
-                        'filters': [filterr.contents for filterr in Filter.objects.filter(assister=assister)]}
-        assistersData.append(assisterData)
+        filtersData = {}
+        for filterr in Filter.objects.filter(assister=assister):
+            filtersData.update({filterr.contents: filterr.explanation})
+
+        assistersData.append({'id': assister.id, 'prompt': assister.prompt,
+                              'decisive': assister.decisive, 'filtersData': filtersData})
 
     return assistersData
 

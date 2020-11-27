@@ -1,0 +1,61 @@
+.assister-help-popup-container {
+    position: fixed;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.assister-help-popup-container .assister-help-popup {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    max-height: 80vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    padding: 3vh 0 3vh 0;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px 15px 0 0;
+    overflow: auto;
+}
+
+.assister-help-popup-container .assister-help-popup .filter-help {
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin: 20px 7vw 20px 7vw;
+}
+
+.assister-help-popup-container .assister-help-popup .filter-help h1 {
+    margin: 0;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.assister-help-popup-container .assister-help-popup .filter-help hr {
+    width: 200px;
+
+    margin: 7px 0 7px 0;
+}
+
+.assister-help-popup-container .assister-help-popup .filter-help p {
+    margin: 0;
+    font-size: 18px;
+    line-height: 25px;
+}
+
+@media only screen and (max-width: 580px) {
+    .assister-help-popup-container .assister-help-popup {
+        max-height: calc(80vh - 17vh);
+
+        padding-bottom: 17vh;
+    }
+}

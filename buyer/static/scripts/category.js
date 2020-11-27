@@ -1,8 +1,9 @@
 var productPopupContainer = document.getElementById('productPopupContainer');
+var assisterHelpPopupContainer = document.getElementById('assisterHelpPopupContainer');
 
 
-function displayProductPopup(productId) {
-    product = JSON.parse(document.getElementById(productId).textContent);
+function displayProductPopup(productIndexedId) {
+    product = JSON.parse(document.getElementById(productIndexedId).textContent);
 
     // Initialize and clear details for fresh popup
     var detailsDiv = document.getElementById('details');
@@ -20,7 +21,7 @@ function displayProductPopup(productId) {
     addProductDetail(detailsDiv, 'Battery life', `${product['batteryDescription']}`);
 
     // Show product popup
-    productPopupContainer.style.display = "block";
+    productPopupContainer.style.display = 'block'
 }
 
 
@@ -51,8 +52,46 @@ productPopupContainer.onclick = function(event) {
 }
 
 
+function displayAssisterPopup(assisterIndexedId) {
+    assisterData = JSON.parse(document.getElementById(assisterIndexedId).textContent);
+
+    // Initialize and clear filter helps
+    assisterHelpPopup = document.getElementById('assisterHelpPopup');
+    assisterHelpPopup.querySelectorAll('*').forEach(cn => cn.remove());
+
+    // File assister popup with its filters and descriptions
+    for (contents in assisterData['filtersData'])
+        addFilterHelp(assisterHelpPopup, contents, assisterData['filtersData'][contents]);
+
+    assisterHelpPopupContainer.style.display = 'block';
+}
+
+
+function addFilterHelp(assisterHelpPopup, contents, explanation) {
+    var filterHelp = document.createElement('div');
+    filterHelp.className = 'filter-help';
+
+    var filterContents = document.createElement('h1');
+    filterContents.innerHTML = contents;
+    filterHelp.appendChild(filterContents);
+
+    filterHelp.appendChild(document.createElement('hr'));
+
+    var filterExplanation = document.createElement('p');
+    filterExplanation.innerHTML = explanation;
+    filterHelp.appendChild(filterExplanation);
+
+    assisterHelpPopup.appendChild(filterHelp);
+}
+
+
+assisterHelpPopupContainer.onclick = function() {
+    assisterHelpPopupContainer.style.display = 'none';
+}
+
+
 window.onclick = function(event) {
-        if (categoryBar.style.display == 'flex' && event.target.id != 'categoriesClickable' &&
+    if (categoryBar.style.display == 'flex' && event.target.id != 'categoriesClickable' &&
         event.target.id != 'categoryBar')
             hideCategoryBar();
 }

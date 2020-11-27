@@ -12,29 +12,33 @@
 	</head>
 	<body>
 		{% include "top_nav.html" %}
+		{% include "assister_help_popup.html" %}
 		{% include "product_popup.html" %}
 
 		<div id="categoryContent" class="content">
 			<div class="assisters">
-				{% for assister in assistersData %}
+				{% for assisterData in assistersData %}
 					<div class="assister">
 						<div class="header">
-							<h1>{{ assister.object.prompt }}</h1>
-				            <img src="{% static 'images/info.png' %}" alt="Sun Logo" onclick="displayAssisterHelpPopup()">
+							<h1>{{ assisterData.prompt }}</h1>
+							{% with 1|buildIndexedId:assisterData.id as assisterIndexedId %}
+								{{ assisterData|json_script:assisterIndexedId }}
+								<img src="{% static 'images/info.png' %}" alt="Info icon" onclick="displayAssisterPopup({{ assisterIndexedId }})">
+							{% endwith %}
 						</div>
 						<hr>
 						<h2>
-							{% if assister.object.decisive %} * chose one
+							{% if assisterData.decisive %} * chose one
 							{% else %} * chose many
 							{% endif %}
 						</h2>
 						<form action="" method="POST">
 							{% csrf_token %}
 							{% with forloop.counter0|stringformat:"i" as assisterId %}
-								{% for filter in assister.filters %}
+								{% for contents, explanation in assisterData.filtersData.items %}
 									{% with assisterId|determineButtonValue:forloop.counter0 as buttonValue %}
 										<button type="Submit" name="filterField" value={{ buttonValue }}
-										style="{{ buttonValue|buildButtonStyle:userAFIds }}">{{ filter }}</button>
+										style="{{ buttonValue|buildButtonStyle:userAFIds }}">{{ contents }}</button>
 									{% endwith %}
 								{% endfor %}
 							{% endwith %}
@@ -51,8 +55,10 @@
 				</div>
 				<div class="products">
 					{% for product in products %}
-						{{ product.data|json_script:product.data.id }}
-						<div class="product" onclick="displayProductPopup({{ product.data.id }})">
+						{% with 2|buildIndexedId:product.data.id as productIndexedId %}
+						{{ product.data|json_script:productIndexedId }}
+						<div class="product" onclick="displayProductPopup({{ productIndexedId }})">
+						{% endwith %}
 							<div class="image-container">
 								{% with category.name|buildProductImagePath:product.data.imageFileName as productImagePath %}
 									<img src="{% static productImagePath %}" alt="{{ product.data.name }}">
@@ -86,6 +92,6 @@
 
 	</body>
 
-	<script src="{% static 'scripts/topnav.js' %}"></script>
+	<script src="{% static 'scripts/top_nav.js' %}"></script>
 	<script src="{% static 'scripts/category.js' %}"></script>
 </html>
