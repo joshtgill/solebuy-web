@@ -13,7 +13,7 @@ function toggleCategoryBar() {
 function displayCategoryBar(homePageStyle) {
     if (homePageStyle) {
         document.getElementById('categoriesClickable').style.display = 'none';
-        categoryBar.style.backgroundColor = 'rgb(242, 242, 242)';
+        categoryBar.style.backgroundColor = 'rgb(245, 245, 245)';
         document.getElementById('categoryBarItemLabel').style.color = 'rgb(17, 17, 17)';
     }
 
