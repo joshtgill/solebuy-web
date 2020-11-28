@@ -26,10 +26,9 @@
 								<img src="{% static 'images/info.png' %}" alt="Info icon" onclick="displayAssisterPopup({{ assisterIndexedId }})">
 							{% endwith %}
 						</div>
-						<hr>
 						<h2>
-							{% if assisterData.decisive %} * chose one
-							{% else %} * chose many
+							{% if assisterData.decisive %} * select one
+							{% else %} * select multiple
 							{% endif %}
 						</h2>
 						<form action="" method="POST">
