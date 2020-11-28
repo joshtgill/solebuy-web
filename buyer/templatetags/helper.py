@@ -27,7 +27,7 @@ def buildCategoryBarItemIconPath(category):
 
 @register.filter(name='buildIndexedId')
 def buildIndexedId(index, objectId):
-    return '{}.{}'.format(index, objectId)
+    return '{}.{}'.format(objectId, index)
 
 
 @register.filter(name='buildProductImagePath')
