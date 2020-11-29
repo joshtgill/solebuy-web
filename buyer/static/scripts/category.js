@@ -60,11 +60,19 @@ function displayAssisterPopup(assisterIndexedId) {
     assisterHelpPopup = document.getElementById('assisterHelpPopup');
     assisterHelpPopup.querySelectorAll('*').forEach(cn => cn.remove());
 
-    // File assister popup with its filters and descriptions
+    // Advice
+    advice = document.createElement('div');
+    advice.className = 'advice';
+    adviceText = document.createElement('p');
+    adviceText.innerHTML = assisterData['advice'];
+    advice.appendChild(adviceText);
+    assisterHelpPopup.appendChild(advice);
+
+    // Filter explanations
     for (contents in assisterData['filtersData'])
         addFilterHelp(assisterHelpPopup, contents, assisterData['filtersData'][contents]);
 
-    // Shop popup at top
+    // Display popup (scrolled up)
     assisterHelpPopupContainer.style.display = 'block';
     assisterHelpPopup.scrollTop = 0;
 }
@@ -77,8 +85,6 @@ function addFilterHelp(assisterHelpPopup, contents, explanation) {
     var filterContents = document.createElement('h1');
     filterContents.innerHTML = contents;
     filterHelp.appendChild(filterContents);
-
-    filterHelp.appendChild(document.createElement('hr'));
 
     var filterExplanation = document.createElement('p');
     filterExplanation.innerHTML = explanation;

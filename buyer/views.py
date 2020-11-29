@@ -90,7 +90,8 @@ def serializeAssisters(category):
             filtersData.update({filterr.contents: filterr.explanation})
 
         assistersData.append({'id': assister.id, 'prompt': assister.prompt,
-                              'decisive': assister.decisive, 'filtersData': filtersData})
+                              'decisive': assister.decisive, 'advice': assister.advice,
+                              'filtersData': filtersData})
 
     return assistersData
 

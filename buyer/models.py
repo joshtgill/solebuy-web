@@ -13,6 +13,7 @@ class Category(models.Model):
 class Assister(models.Model):
     prompt = models.CharField(max_length=LENGTH_MEDIUM)
     decisive = models.BooleanField()
+    advice = models.CharField(max_length=LENGTH_XLONG, default='')
 
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
