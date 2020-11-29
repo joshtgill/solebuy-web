@@ -109,6 +109,10 @@
 }
 
 @media only screen and (max-width: 580px) {
+    .product-popup-container .product-popup .image-container {
+        width: 300px;
+    }
+
     .product-popup-container .product-popup .summaries {
         width: 95vw;
         min-width: unset;

@@ -20,8 +20,9 @@ function displayProductPopup(productIndexedId) {
     addProductDetail(detailsDiv, 'Camera', `${product['cameraDescription']}`);
     addProductDetail(detailsDiv, 'Battery life', `${product['batteryDescription']}`);
 
-    // Show product popup
+    // Show popup at top
     productPopupContainer.style.display = 'block'
+    document.getElementById('productPopup').scrollTop = 0;
 }
 
 
@@ -63,7 +64,9 @@ function displayAssisterPopup(assisterIndexedId) {
     for (contents in assisterData['filtersData'])
         addFilterHelp(assisterHelpPopup, contents, assisterData['filtersData'][contents]);
 
+    // Shop popup at top
     assisterHelpPopupContainer.style.display = 'block';
+    assisterHelpPopup.scrollTop = 0;
 }
 
 
