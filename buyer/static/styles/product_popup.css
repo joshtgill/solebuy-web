@@ -56,10 +56,14 @@
 }
 
 .product-popup-container .product-popup .summaries p {
-    margin: 0 0 15px 0;
+    margin: 0;
     font-size: 18px;
     line-height: 25px;
     text-align: left;
+}
+
+.product-popup-container .product-popup .summaries .spacer {
+    margin: 10px auto 10px auto;
 }
 
 .product-popup-container .product-popup .specs {
