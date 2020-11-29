@@ -121,6 +121,8 @@
         width: 95vw;
         min-width: unset;
         max-width: unset;
+
+        padding: 0 2vw 0 2vw;
     }
 
     .product-popup-container .product-popup .details {
