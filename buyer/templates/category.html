@@ -19,13 +19,7 @@
 			<div class="assisters">
 				{% for assisterData in assistersData %}
 					<div class="assister">
-						<div class="header">
-							<h1>{{ assisterData.prompt }}</h1>
-							{% with 1|buildIndexedId:assisterData.id as assisterIndexedId %}
-								{{ assisterData|json_script:assisterIndexedId }}
-								<img src="{% static 'images/info.png' %}" alt="Info icon" onclick="displayAssisterPopup({{ assisterIndexedId }})">
-							{% endwith %}
-						</div>
+						<h1>{{ assisterData.prompt }}</h1>
 						<h2>
 							{% if assisterData.decisive %} * select one
 							{% else %} * select multiple
@@ -42,6 +36,10 @@
 								{% endfor %}
 							{% endwith %}
 						</form>
+						{% with 1|buildIndexedId:assisterData.id as assisterIndexedId %}
+							{{ assisterData|json_script:assisterIndexedId }}
+							<h3 onclick="displayAssisterPopup({{ assisterIndexedId }})">Help me decide</h3>
+						{% endwith %}
 					</div>
 				{% endfor %}
 			</div>

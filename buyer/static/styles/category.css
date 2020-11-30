@@ -2,7 +2,6 @@
     display: flex;
     flex-wrap: wrap;
 
-    padding: 2vh 0 1.5vh 0;
     justify-content: center;
     background-color: rgb(245, 245, 245);
     border-bottom: 1px solid rgb(221, 221, 221);
@@ -12,38 +11,23 @@
     display: flex;
     flex-direction: column;
 
-    margin: 0 4vw 0 4vw;
+    margin: 2vh 4vw 2.5vh 4vw;
     text-align: center;
 }
 
-.content .assisters .assister .header {
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-}
-
-.content .assisters .assister .header h1 {
+.content .assisters .assister h1 {
     margin: 0;
     font-size: 20px;
     color: rgb(51, 51, 51);
 }
 
-.content .assisters .assister .header img {
-    width: 16px;
-    height: 16px;
-
-    margin-left: 10px;
-    cursor: pointer;
-}
-
 .content .assisters .assister h2 {
-    margin: 0 0 10px 0;
+    margin: 0 0 5px 0;
     font-size: 13px;
     color: rgb(51, 51, 51);
 }
 
-.content .assisters .assister button {
+.content .assisters .assister form button {
     display: flex;
     width: 250px;
     height: 35px;
@@ -57,12 +41,24 @@
     border-radius: 5px;
 }
 
-.content .assisters .assister button:hover {
+.content .assisters .assister form {
+    margin: 0;
+}
+
+.content .assisters .assister form button:hover {
     background-color: rgb(250, 250, 250);
 }
 
-.content .assisters .assister button:active {
+.content .assisters .assister form button:active {
     background-color: rgb(250, 250, 250);
+}
+
+.content .assisters .assister h3 {
+    margin: 0.5vh 0 0 0;
+    font-size: 14px;
+    color: rgb(31, 141, 231);
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .content .results {
