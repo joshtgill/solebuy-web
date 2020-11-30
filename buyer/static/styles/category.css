@@ -72,6 +72,10 @@
     margin: 2vh 0 0 3vw;
 }
 
+.content .results .header form {
+    margin: 0;
+}
+
 .content .results .header label {
     margin: 0 7px 0 0;
     font-size: 18px;
