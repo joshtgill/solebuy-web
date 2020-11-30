@@ -67,17 +67,23 @@
 }
 
 .product-popup-container .product-popup .specs {
-    max-width: 500px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 
-    margin: 4vh 0 0 0;
+    margin: 2vh 0 0 0;
 }
 
 .product-popup-container .product-popup .specs h1 {
-    margin: 0 0 5px 0;
+    width: 100%;
+
+    margin: 0 0 10px 0;
     font-size: 22px;
 }
 
 .product-popup-container .product-popup .specs .details {
+    max-width: 1400px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -92,6 +98,8 @@
 }
 
 .product-popup-container .product-popup .details .detail .label h1 {
+    width: unset;
+
     margin: 0;
     padding: 10px;
     font-size: 16px;
@@ -105,6 +113,8 @@
 }
 
 .product-popup-container .product-popup .details .detail .value h1 {
+    width: unset;
+
     margin: 0;
     padding: 10px;
     font-size: 16px;
