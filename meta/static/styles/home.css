@@ -45,6 +45,7 @@
 .content .pitch p {
     font-size: 35px;
     font-weight: normal;
+    line-height: 45px;
     color: rgb(50, 50, 50);
 }
 
