@@ -1,96 +1,33 @@
-.content {
-    flex-direction: row;
-}
-
 .content .slogan {
-    position: relative;
     display: flex;
-    flex-direction: column;
-    width: 25vw;
-    min-width: 400px;
-    max-width: 500px;
-    height: 100%;
+    flex-wrap: wrap;
+    align-items: flex-end;
+
+    padding: 10vmin 0 0 1vw;
+    background-color: rgb(245, 245, 245);
 }
 
-.content .slogan-word {
-    display: flex;
-    width: 100%;
-    height: calc(100% / 3);
-
-    justify-content: center;
-    align-items: center;
-}
-
-.content .slogan .slogan-word h1 {
+.content .slogan h1 {
     margin: 0;
-    font-size: 85px;
+    font-size: 7vmax;
     font-weight: normal;
-    color: rgb(255, 255, 255);
 }
 
 .content .pitch {
+    display: flex;
     flex: 1;
-    padding: 3vh 3vw 3vh 3vw;
-    overflow: auto;
-    border-top: 1px solid rgb(221, 221, 221);
+    justify-content: center;
 }
 
-.content .pitch h1 {
-    margin: 0;
-    font-size: 90px;
-    font-weight: normal;
-    color: rgb(50, 50, 50);
+.content .pitch .con {
+    margin: 3vh 2vw 0 2vw;
+    display: inline-block;
 }
 
-.content .pitch p {
+.content .pitch .con p {
+    margin: 25px 0 25px 0;
     font-size: 35px;
     font-weight: normal;
     line-height: 45px;
     color: rgb(50, 50, 50);
-}
-
-@media only screen and (max-width: 1000px) {
-    .content {
-        flex-direction: column;
-    }
-
-    .content .slogan {
-        flex-direction: row;
-        height: auto;
-        width: 100vw;
-        min-width: unset;
-        max-width: unset;
-        height: 8vh;
-        min-height: 60px;
-    }
-
-    .content .slogan-word {
-        width: calc(100% / 3);
-        height: 100%;
-    }
-
-    .content .slogan .slogan-word h1 {
-        font-size: 40px;
-    }
-
-    .content .pitch {
-        padding: 2vh 2vw 0vh 2vw;
-    }
-
-    .content .pitch h1 {
-        font-size: 40px;
-        margin-bottom: 1vh;
-    }
-
-    .content .pitch p {
-        margin: 0;
-        margin-top: 2vh;
-        font-size: 30px;
-    }
-}
-
-@media only screen and (max-width: 580px) {
-    .content .slogan .slogan-word h1 {
-        font-size: 30px;
-    }
 }
