@@ -5,6 +5,7 @@
 
     padding: 10vmin 0 0 1vw;
     background-color: rgb(245, 245, 245);
+    border-bottom: 1px solid rgb(220, 220, 220);
 }
 
 .content .slogan h1 {
@@ -14,17 +15,10 @@
 }
 
 .content .pitch {
-    display: flex;
-    flex: 1;
-    justify-content: center;
+    margin: 4vh 5vw 0 5vw;
 }
 
-.content .pitch .con {
-    margin: 3vh 2vw 0 2vw;
-    display: inline-block;
-}
-
-.content .pitch .con p {
+.content .pitch p {
     margin: 25px 0 25px 0;
     font-size: 35px;
     font-weight: normal;
