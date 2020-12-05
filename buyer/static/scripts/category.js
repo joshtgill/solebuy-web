@@ -5,20 +5,20 @@ var assisterHelpPopupContainer = document.getElementById('assisterHelpPopupConta
 function displayProductPopup(productIndexedId) {
     product = JSON.parse(document.getElementById(productIndexedId).textContent);
 
-    // Initialize and clear details for fresh popup
-    var detailsDiv = document.getElementById('details');
-    detailsDiv.querySelectorAll('*').forEach(cn => cn.remove());
+    // Initialize and clear specs for fresh popup
+    var specsDiv = document.getElementById('specs');
+    specsDiv.querySelectorAll('*').forEach(cn => cn.remove());
 
     // Load and display general product data
     document.getElementById('name').innerText = product['name'];
     document.getElementById('image').src = `/static/images/smartphone/products/${product['imageFileName']}`;
     document.getElementById('prosSummary').innerText = product['prosSummary'];
     document.getElementById('consSummary').innerText = product['consSummary'];
-    addProductDetail(detailsDiv, 'Starting price', `$${product['price'].toFixed(2)}`);
-    addProductDetail(detailsDiv, 'Starting capacity', `${product['entryCapacity']} GB`);
-    addProductDetail(detailsDiv, 'Display', `${product['displayDescription']}`);
-    addProductDetail(detailsDiv, 'Camera', `${product['cameraDescription']}`);
-    addProductDetail(detailsDiv, 'Battery life', `${product['batteryDescription']}`);
+    addProductSpec(specsDiv, 'Starting price', `$${product['price'].toFixed(2)}`);
+    addProductSpec(specsDiv, 'Starting capacity', `${product['entryCapacity']} GB`);
+    addProductSpec(specsDiv, 'Display', `${product['displayDescription']}`);
+    addProductSpec(specsDiv, 'Camera', `${product['cameraDescription']}`);
+    addProductSpec(specsDiv, 'Battery life', `${product['batteryDescription']}`);
 
     // Show popup at top
     productPopupContainer.style.display = 'block'
@@ -26,25 +26,25 @@ function displayProductPopup(productIndexedId) {
 }
 
 
-function addProductDetail(detailsDiv, label, value) {
-    var detailDiv = document.createElement('div');
-    detailDiv.className = 'detail';
+function addProductSpec(specsDiv, label, value) {
+    var specDiv = document.createElement('div');
+    specDiv.className = 'spec';
 
     var labelDiv = document.createElement('div');
     labelDiv.className = 'label';
     var labelH1 = document.createElement('h1');
     labelH1.innerHTML = label;
     labelDiv.appendChild(labelH1);
-    detailDiv.appendChild(labelDiv);
+    specDiv.appendChild(labelDiv);
 
     var valueDiv = document.createElement('div');
     valueDiv.className = 'value';
     var valueH1 = document.createElement('h1');
     valueH1.innerHTML = value;
     valueDiv.appendChild(valueH1);
-    detailDiv.appendChild(valueDiv);
+    specDiv.appendChild(valueDiv);
 
-    detailsDiv.appendChild(detailDiv);
+    specsDiv.appendChild(specDiv);
 }
 
 
