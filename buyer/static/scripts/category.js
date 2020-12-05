@@ -14,7 +14,7 @@ function displayProductPopup(productIndexedId) {
     document.getElementById('image').src = `/static/images/smartphone/products/${product['imageFileName']}`;
     document.getElementById('prosSummary').innerText = product['prosSummary'];
     document.getElementById('consSummary').innerText = product['consSummary'];
-    addProductSpec(specsDiv, 'Starting price', `$${product['price'].toFixed(2)}`);
+    addProductSpec(specsDiv, 'Starting price', `$${product['price']}`);
     addProductSpec(specsDiv, 'Starting capacity', `${product['entryCapacity']} GB`);
     addProductSpec(specsDiv, 'Display', `${product['displayDescription']}`);
     addProductSpec(specsDiv, 'Camera', `${product['cameraDescription']}`);

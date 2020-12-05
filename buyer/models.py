@@ -32,7 +32,7 @@ class AssisterFilterId(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=LENGTH_MEDIUM)
-    price = models.FloatField()
+    price = models.IntegerField()
     imageFileName = models.CharField(max_length=LENGTH_MEDIUM)
     prosSummary = models.CharField(max_length=LENGTH_XLONG)
     consSummary = models.CharField(max_length=LENGTH_XLONG)
