@@ -109,6 +109,7 @@
 .content .results .products .product {
     display: flex;
     width: 470px;
+    height: 235px;
 
     margin: 2vh 1vw 2vh 1vw;
     border: 1px solid rgb(190, 190, 190);
@@ -119,7 +120,6 @@
 .content .results .products .product .image-container {
     display: flex;
     width: 210px;
-    height: 250px;
 
     justify-content: center;
     align-items: center;
@@ -127,7 +127,7 @@
 }
 
 .content .results .products .product .image-container img {
-    width: 100%;
+    height: 85%;
 }
 
 .content .results .products .product .details {
@@ -149,7 +149,7 @@
 
 .content .results .products .product .details h2 {
     font-size: 15px;
-    margin: 0.2vh 0 0.8 0;
+    margin: 0.2vh 0 0.8vh 0;
 }
 
 .content .results .products .product .details .procons {
@@ -184,11 +184,15 @@
 @media only screen and (max-width: 1000px) {
     .content .results .products .product {
         flex-direction: column;
-        width: 250px;
+        width: 235px;
         height: 470px;
 
         justify-content: center;
         align-items: center;
+    }
+
+    .content .results .products .product .image-container {
+        height: 250px;
     }
 
     .content .results .products .product .details {
